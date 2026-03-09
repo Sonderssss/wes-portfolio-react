@@ -1,0 +1,92 @@
+@font-face {
+  font-family: behance ;
+  src: url('./assets/fonts/behance.ttf') format('truetype');
+}
+@font-face {
+  font-family: Magero;
+  src: url('./assets/fonts/Magero.ttf') format('truetype');
+}
+
+body{
+  background:cover;
+  background-image: url('./assets/images/portfolio-background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  min-height: 100vh;
+}
+#app {
+  font-family: 'behance';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color:#102542
+}
+
+nav {
+  padding: 30px;
+}
+
+nav a {
+  font-weight: bold;
+  color: #F87060;
+  text-decoration: none;
+  font-size: 1.2rem;
+  
+}
+
+nav a.router-link-exact-active {
+  color: #102542;
+}
+.container{
+  display: flex;
+  justify-content: space-around;
+}
+.other-links {
+  display: flex;
+  align-items: space-around;
+  gap: 25px; 
+}
+span {
+  font-weight: bold;
+  color: #F87060;
+  font-size: 1.2rem;
+  letter-spacing: 0.1em;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 768px) {
+  nav {
+    padding: 15px;
+  }
+  
+  .container {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .other-links {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+  
+  nav a, span {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  nav {
+    padding: 10px;
+  }
+  
+  nav a, span {
+    font-size: 0.9rem;
+  }
+  
+  .other-links {
+    gap: 8px;
+  }
+}
