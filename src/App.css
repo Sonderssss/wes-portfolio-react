@@ -41,6 +41,12 @@ nav a.router-link-exact-active {
 .container{
   display: flex;
   justify-content: space-around;
+  position: relative;
+}
+.container > span {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 .other-links {
   display: flex;
@@ -63,6 +69,11 @@ span {
   .container {
     flex-direction: column;
     gap: 15px;
+  }
+  
+  .container > span {
+    position: static;
+    transform: none;
   }
   
   .other-links {
