@@ -8,7 +8,6 @@
 }
 
 body{
-  background:cover;
   background-image: url('./assets/images/portfolio-background.jpg');
   background-size: cover;
   background-repeat: no-repeat;
@@ -45,7 +44,7 @@ nav a.router-link-exact-active {
 }
 .other-links {
   display: flex;
-  align-items: space-around;
+  align-items: center;
   gap: 25px; 
 }
 span {

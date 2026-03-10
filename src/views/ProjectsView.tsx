@@ -3,7 +3,7 @@ import './ProjectsView.css'
 
 const ProjectsView: React.FC = () => {
   return (
-    <div>
+    <div className="projects-view">
       <h1>Explore my Projects</h1>
       <div className="projects-list">
         <p>Here you can find a collection of my recent projects, showcasing my skills and creativity.</p>
