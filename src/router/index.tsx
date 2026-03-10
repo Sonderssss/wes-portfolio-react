@@ -4,6 +4,7 @@ import HomeView from '../views/HomeView'
 import AboutView from '../views/AboutView'
 import ContactView from '../views/ContactView'
 import ProjectsView from '../views/ProjectsView'
+import NotFoundView from '../views/NotFoundView'
 
 const AppRouter: React.FC = () => {
   return (
@@ -12,6 +13,7 @@ const AppRouter: React.FC = () => {
       <Route path="/about" element={<AboutView />} />
       <Route path="/contact" element={<ContactView />} />
       <Route path="/projects" element={<ProjectsView />} />
+      <Route path="*" element={<NotFoundView />} />
     </Routes>
   )
 }
