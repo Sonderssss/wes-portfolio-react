@@ -15,6 +15,17 @@ body{
   background-position: center;
   min-height: 100vh;
 }
+
+:root {
+  --white: #ffffff;
+
+  --stone-200: #e7e5e4;
+  --stone-400: #a8a29e;
+  --stone-500: #78716c;
+  --stone-600: #57534e;
+  --stone-900: #1c1917;
+}
+
 #app {
   font-family: 'behance';
   -webkit-font-smoothing: antialiased;
