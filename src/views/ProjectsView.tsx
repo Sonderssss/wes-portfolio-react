@@ -9,6 +9,8 @@ interface Project {
   category: string;
   image: string;
   size: "large" | "small";
+  description: string;
+  codebase: string;
 }
 
 const projects: Project[] = [
@@ -18,6 +20,8 @@ const projects: Project[] = [
     category: "Web Application",
     image: "https://picsum.photos/seed/logistics/800/1200",
     size: "large",
+    description: "A full-stack logistics management platform with real-time tracking, route optimization, and analytics dashboards.",
+    codebase: "React, Node.js, PostgreSQL",
   },
   {
     id: 2,
@@ -25,6 +29,8 @@ const projects: Project[] = [
     category: "Data Visualization",
     image: "https://picsum.photos/seed/city/800/600",
     size: "small",
+    description: "Interactive dashboard for monitoring urban infrastructure metrics including traffic, energy, and public services.",
+    codebase: "Vue.js, D3.js, Python",
   },
   {
     id: 3,
@@ -32,6 +38,8 @@ const projects: Project[] = [
     category: "Mobile Design",
     image: "https://picsum.photos/seed/eco/800/600",
     size: "small",
+    description: "A mobile app that helps users track their carbon footprint and suggests eco-friendly alternatives.",
+    codebase: "React Native, Firebase",
   },
 ];
 
@@ -87,10 +95,27 @@ const ProjectsView: React.FC = () => {
   return (
     <div className="projects-view">
       <h1>Explore my Projects</h1>
-      <div className="projects-grid">
-        {projects.map((project, index) => (
-          <ProjectCard key={project.id} project={project} index={index} />
-        ))}
+      <div className="projects-layout">
+        <div className="projects-grid">
+          {projects.map((project, index) => (
+            <ProjectCard key={project.id} project={project} index={index} />
+          ))}
+        </div>
+        <div className="projects-details">
+          {projects.map((project, index) => (
+            <motion.div
+              key={project.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="project-detail"
+            >
+              <h3>{project.title}</h3>
+              <p>{project.description}</p>
+              <span className="detail-codebase">Built with: {project.codebase}</span>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </div>
   );
