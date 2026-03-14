@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { motion } from 'motion/react'
 import './ContactView.css'
 
 const ContactView: React.FC = () => {
@@ -14,7 +15,12 @@ const ContactView: React.FC = () => {
   }
 
   return (
-    <div className="contact-view">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="contact-view"
+    >
       <div>
         <h1>This is the contact page</h1>
         <form onSubmit={submitForm}>
@@ -30,7 +36,7 @@ const ContactView: React.FC = () => {
           </div>
         </form>
       </div>
-    </div>
+    </motion.div>
   )
 }
 
