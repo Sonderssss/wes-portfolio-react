@@ -1,3 +1,4 @@
+import React from "react";
 import { motion } from "motion/react";
 import "./ProjectsView.css";
 import { ImageIcon, ExternalLink, ArrowRight } from "lucide-react";
@@ -34,7 +35,7 @@ const projects: Project[] = [
   },
 ];
 
-const ProjectsView = ({
+const ProjectCard = ({
   project,
   index,
 }: {
@@ -46,7 +47,7 @@ const ProjectsView = ({
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="project-card"
+      className={`project-card ${project.size === "large" ? "card-large" : "card-small"}`}
     >
       {/* Image Background */}
       <div className="card-image-container">
@@ -79,6 +80,19 @@ const ProjectsView = ({
         </div>
       </div>
     </motion.div>
+  );
+};
+
+const ProjectsView: React.FC = () => {
+  return (
+    <div className="projects-view">
+      <h1>Explore my Projects</h1>
+      <div className="projects-grid">
+        {projects.map((project, index) => (
+          <ProjectCard key={project.id} project={project} index={index} />
+        ))}
+      </div>
+    </div>
   );
 };
 
