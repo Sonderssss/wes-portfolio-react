@@ -91,13 +91,19 @@ const AboutView: React.FC = () => {
                 {q.icon}
               </div>
 
-              <h3 style={{ fontSize: "1.25rem", fontWeight: 600 }}>
+              <h3
+                style={{
+                  fontSize: "1.25rem",
+                  fontWeight: 600,
+                  color: "var(--stone-900)",
+                }}
+              >
                 {q.title}
               </h3>
 
               <p
                 style={{
-                  color: "var(--stone-500)",
+                  color: "#a1a1aa",
                   fontSize: "0.875rem",
                   lineHeight: 1.5,
                 }}

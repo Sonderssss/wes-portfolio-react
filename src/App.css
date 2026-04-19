@@ -8,7 +8,7 @@
 }
 
 body{
-  background-color: var(--stone-200);
+  background-color: #B76E79;
   min-height: 100vh;
   margin: 0;
 }
@@ -28,7 +28,7 @@ body{
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color:#102542
+  color: #F4ECEB;
 }
 
 nav {
@@ -37,14 +37,15 @@ nav {
 
 nav a {
   font-weight: bold;
-  color: #F87060;
+  color: #F4ECEB;
   text-decoration: none;
   font-size: 1.2rem;
   
 }
 
 nav a.router-link-exact-active {
-  color: #102542;
+  color: #F4ECEB;
+  text-decoration: underline;
 }
 .container{
   display: flex;
@@ -63,7 +64,7 @@ nav a.router-link-exact-active {
 }
 span {
   font-weight: bold;
-  color: #F87060;
+  color: #F4ECEB;
   font-size: 1.2rem;
   letter-spacing: 0.1em;
 }
@@ -93,7 +94,7 @@ span {
     background: none;
     border: none;
     cursor: pointer;
-    color: #F87060;
+    color: #F4ECEB;
     padding: 5px;
     display: flex;
     align-items: center;
