@@ -8,12 +8,9 @@
 }
 
 body{
-  background-image: url('./assets/images/portfolio-background.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
+  background-color: var(--stone-200);
   min-height: 100vh;
+  margin: 0;
 }
 
 :root {
