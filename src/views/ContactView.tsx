@@ -5,6 +5,7 @@ import './ContactView.css'
 const ContactView: React.FC = () => {
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
+  const [name, setName] = useState('')
 
   const submitForm = (e: React.FormEvent) => {
     e.preventDefault()
@@ -25,13 +26,21 @@ const ContactView: React.FC = () => {
       <div>
         <h1>This is the contact page</h1>
         <form onSubmit={submitForm}>
-          <label htmlFor="email">Email: </label>
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-          <p>{email}</p>
-          <label htmlFor="message">Message:</label>
-          <textarea value={message} onChange={(e) => setMessage(e.target.value)}></textarea>
-          <p>{message}</p>
-          <br />
+          <div className="input-group">
+            <label htmlFor="name">Your name : </label>
+            <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+          </div>
+
+          <div className="input-group">
+            <label htmlFor="email">Email : </label>
+            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+          </div>
+
+          <div className="input-group">
+            <label htmlFor="message">Message : </label>
+            <textarea value={message} onChange={(e) => setMessage(e.target.value)}></textarea>
+          </div>
+
           <div className="submit">
             <button type="submit">Send</button>
           </div>

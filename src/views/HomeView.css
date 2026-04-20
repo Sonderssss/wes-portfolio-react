@@ -51,7 +51,10 @@
   font-weight: bold;
   color: #B76E79;
   padding: 10px 20px;
-  border: none;
+  border-left: 1px solid #B76E79;
+  border-bottom: 1px solid #B76E79;
+  border-top: none;
+  border-right: none;
   border-radius: 10px;
   cursor: pointer;
 }
