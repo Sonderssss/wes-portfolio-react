@@ -22,7 +22,8 @@ html {
 }
 
 body{
-  background-color: #B76E79;
+  background-image: linear-gradient(235deg, #b76e79 11%, #f4eceb 100%);
+  background-attachment: fixed;
   min-height: 100vh;
   margin: 0;
 }
