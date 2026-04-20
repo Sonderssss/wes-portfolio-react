@@ -1,11 +1,15 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import AppRouter from "./router";
+import HomeView from "./views/HomeView";
+import ProjectsView from "./views/ProjectsView";
+import AboutView from "./views/AboutView";
+import ContactView from "./views/ContactView";
+import { useActiveSection } from "./hooks/useActiveSection";
 import "./App.css";
 
 const App: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const activeSection = useActiveSection(["home", "projects", "about", "contact"]);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -17,7 +21,7 @@ const App: React.FC = () => {
 
   return (
     <>
-      <nav>
+      <nav style={{ position: "sticky", top: 0, zIndex: 1000, backgroundColor: "#B76E79", borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
         <div className="nav-header">
           <span>WES</span>
           <button
@@ -30,48 +34,53 @@ const App: React.FC = () => {
           </button>
         </div>
         <div className={`container ${isMenuOpen ? "menu-open" : ""}`}>
-          <NavLink
-            to="/"
-            className={({ isActive }) =>
-              isActive ? "router-link-exact-active" : ""
-            }
+          <a
+            href="#home"
+            className={activeSection === "home" ? "router-link-exact-active" : ""}
             onClick={closeMenu}
           >
             HOME
-          </NavLink>
+          </a>
           <span className="desktop-logo">WES</span>
           <div className="other-links">
-            <NavLink
-              to="/projects"
-              className={({ isActive }) =>
-                isActive ? "router-link-exact-active" : ""
-              }
+            <a
+              href="#projects"
+              className={activeSection === "projects" ? "router-link-exact-active" : ""}
               onClick={closeMenu}
             >
               PROJECTS
-            </NavLink>
-            <NavLink
-              to="/about"
-              className={({ isActive }) =>
-                isActive ? "router-link-exact-active" : ""
-              }
+            </a>
+            <a
+              href="#about"
+              className={activeSection === "about" ? "router-link-exact-active" : ""}
               onClick={closeMenu}
             >
               ABOUT
-            </NavLink>
-            <NavLink
-              to="/contact"
-              className={({ isActive }) =>
-                isActive ? "router-link-exact-active" : ""
-              }
+            </a>
+            <a
+              href="#contact"
+              className={activeSection === "contact" ? "router-link-exact-active" : ""}
               onClick={closeMenu}
             >
               CONTACT
-            </NavLink>
+            </a>
           </div>
         </div>
       </nav>
-      <AppRouter />
+      <main>
+        <section id="home">
+          <HomeView />
+        </section>
+        <section id="projects" style={{ paddingTop: '50px' }}>
+          <ProjectsView />
+        </section>
+        <section id="about" style={{ paddingTop: '50px' }}>
+          <AboutView />
+        </section>
+        <section id="contact" style={{ paddingTop: '50px', paddingBottom: '100px' }}>
+          <ContactView />
+        </section>
+      </main>
     </>
   );
 };

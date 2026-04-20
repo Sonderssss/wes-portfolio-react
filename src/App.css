@@ -7,6 +7,10 @@
   src: url('./assets/fonts/Magero.ttf') format('truetype');
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body{
   background-color: #B76E79;
   min-height: 100vh;

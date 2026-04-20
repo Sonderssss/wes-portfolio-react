@@ -56,7 +56,8 @@ const ProjectCard = ({
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       className={`project-card ${
         project.size === "large" ? "card-large" : "card-small"
@@ -111,7 +112,8 @@ const ProjectsView: React.FC = () => {
             <motion.div
               key={project.id}
               initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="project-detail"
             >

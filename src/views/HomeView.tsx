@@ -1,20 +1,18 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
 import { motion } from 'motion/react'
 import PortfolioImg from '../assets/images/Portfolio.png'
 import './HomeView.css'
 
 const HomeView: React.FC = () => {
-  const navigate = useNavigate()
-
   const onContactClick = () => {
-    navigate('/contact')
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
   }
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.5 }}
       className="home-content"
     >
