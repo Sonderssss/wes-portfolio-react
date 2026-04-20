@@ -68,16 +68,16 @@ const App: React.FC = () => {
         </div>
       </nav>
       <main>
-        <section id="home">
+        <section id="home" className="page-section">
           <HomeView />
         </section>
-        <section id="projects" style={{ paddingTop: '50px' }}>
+        <section id="projects" className="page-section" style={{ paddingTop: '50px' }}>
           <ProjectsView />
         </section>
-        <section id="about" style={{ paddingTop: '50px' }}>
+        <section id="about" className="page-section" style={{ paddingTop: '50px' }}>
           <AboutView />
         </section>
-        <section id="contact" style={{ paddingTop: '50px', paddingBottom: '100px' }}>
+        <section id="contact" className="page-section" style={{ paddingTop: '50px', paddingBottom: '100px' }}>
           <ContactView />
         </section>
       </main>
