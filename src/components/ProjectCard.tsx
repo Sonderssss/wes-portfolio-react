@@ -57,7 +57,11 @@ const ProjectCard = ({
           
           <div className="card-hover-details">
             <p className="card-description">{project.description}</p>
-            <span className="card-codebase">Built with: {project.codebase}</span>
+            <div className="card-codebase">
+              {project.codebase.split(',').map((tech, i) => (
+                <span key={i} className="tech-badge">{tech.trim()}</span>
+              ))}
+            </div>
           </div>
 
           <div className="view-project">
