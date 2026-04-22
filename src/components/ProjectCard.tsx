@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "motion/react";
-import { ImageIcon, ExternalLink, ArrowRight } from "lucide-react";
+import { Zap, Shield, LineChart, CheckCircle2 } from "lucide-react";
 
 export interface Project {
   id: number;
@@ -11,6 +11,16 @@ export interface Project {
   description: string;
   codebase: string;
 }
+
+const getTechIcon = (index: number) => {
+  const icons = [
+    <Zap className="h-3 w-3" />,
+    <Shield className="h-3 w-3" />,
+    <LineChart className="h-3 w-3" />,
+    <CheckCircle2 className="h-3 w-3" />,
+  ];
+  return icons[index % icons.length];
+};
 
 const ProjectCard = ({
   project,
@@ -29,44 +39,32 @@ const ProjectCard = ({
         project.size === "large" ? "card-large" : "card-small"
       }`}
     >
-      {/* Image Background */}
-      <div className="card-image-container">
+      <div className="card-image-wrapper">
         <img
           src={project.image}
           alt={project.title}
           className="card-image"
           referrerPolicy="no-referrer"
         />
-        <div className="card-overlay" />
+        <div className="card-image-gradient" />
+        
+        <div className="card-top-tech">
+          {project.codebase.split(",").map((tech, i) => (
+            <span key={i} className="tech-pill">
+              {getTechIcon(i)}
+              {tech.trim()}
+            </span>
+          ))}
+        </div>
       </div>
 
-      {/* Content Overlay */}
-      <div className="card-content">
-        <div className="card-top">
-          <div className="icon-wrapper">
-            <ImageIcon className="h-5 w-5" />
-          </div>
-          <motion.div whileHover={{ scale: 1.1 }} className="external-link-btn">
-            <ExternalLink className="h-5 w-5" />
-          </motion.div>
-        </div>
-
-        <div className="card-bottom">
-          <p className="card-category">{project.category}</p>
-          <h3 className="card-title">{project.title}</h3>
-          
-          <div className="card-hover-details">
-            <p className="card-description">{project.description}</p>
-            <div className="card-codebase">
-              {project.codebase.split(',').map((tech, i) => (
-                <span key={i} className="tech-badge">{tech.trim()}</span>
-              ))}
-            </div>
-          </div>
-
-          <div className="view-project">
-            View Project <ArrowRight className="h-4 w-4" />
-          </div>
+      <div className="card-bottom-content">
+        <h3 className="card-title-new">{project.title}</h3>
+        <p className="card-desc-new">{project.description}</p>
+        
+        <div className="card-actions-new">
+          <button className="btn-primary">View Project</button>
+          <button className="btn-secondary">Source Code</button>
         </div>
       </div>
     </motion.div>
