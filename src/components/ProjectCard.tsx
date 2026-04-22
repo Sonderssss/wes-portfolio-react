@@ -48,6 +48,10 @@ const ProjectCard = ({
         />
         <div className="card-image-gradient" />
         
+        <div className="initial-title-overlay">
+          <h2>{project.title}</h2>
+        </div>
+        
         <div className="card-top-tech">
           {project.codebase.split(",").map((tech, i) => (
             <span key={i} className="tech-pill">
