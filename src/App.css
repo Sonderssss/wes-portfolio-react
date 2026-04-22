@@ -62,9 +62,12 @@ nav a.router-link-exact-active {
   color: #F4ECEB;
   text-decoration: underline;
 }
-.container{
+.container {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  max-width: 1000px;
+  width: 90%;
+  margin: 0 auto;
   position: relative;
 }
 .container > span {
