@@ -54,6 +54,12 @@ const ProjectCard = ({
         <div className="card-bottom">
           <p className="card-category">{project.category}</p>
           <h3 className="card-title">{project.title}</h3>
+          
+          <div className="card-hover-details">
+            <p className="card-description">{project.description}</p>
+            <span className="card-codebase">Built with: {project.codebase}</span>
+          </div>
+
           <div className="view-project">
             View Project <ArrowRight className="h-4 w-4" />
           </div>

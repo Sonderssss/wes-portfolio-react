@@ -36,10 +36,10 @@ const AboutView: React.FC = () => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 25 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.9 }}
       className="about-container"
     >
       <div className="about-header">
@@ -78,6 +78,9 @@ const AboutView: React.FC = () => {
                 display: "flex",
                 flexDirection: "column",
                 gap: "1rem",
+                backgroundImage: "linear-gradient(235deg, #b76e79 20%, #f4eceb 80%)",
+                borderLeft: "2px solid #b76e79",
+                borderBottom: "2px solid #b76e79",
               }}
             >
               <div

@@ -50,51 +50,7 @@
   margin-bottom: 20px;
 }
 
-.projects-layout {
-  display: flex;
-  gap: 2rem;
-  align-items: flex-start;
-}
 
-.projects-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-  flex: 3;
-}
-
-.projects-details {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.project-detail {
-  background-color: #B76E79;
-  opacity: 0.9;
-  border-radius: 10px;
-  padding: 1.25rem;
-}
-
-.project-detail h3 {
-  font-size: 1.1rem;
-  margin-bottom: 0.5rem;
-  color: #F4ECEB;
-}
-
-.project-detail p {
-  font-size: 0.9rem;
-  line-height: 1.5;
-  color: #F4ECEB;
-  margin-bottom: 0.5rem;
-}
-
-.detail-codebase {
-  font-size: 0.8rem;
-  font-weight: bold;
-  color: #F4ECEB;
-}
 
 .card-large {
   grid-row: span 2;
@@ -220,4 +176,32 @@
 .project-card:hover .view-project {
   opacity: 1;
   transform: translateY(0);
+}
+
+.card-hover-details {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.4s ease-in-out;
+}
+
+.project-card:hover .card-hover-details {
+  max-height: 250px;
+  opacity: 1;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-description {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+  color: #F4ECEB;
+}
+
+.card-codebase {
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #F4ECEB;
+  display: block;
 }
