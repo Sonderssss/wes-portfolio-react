@@ -16,6 +16,8 @@ const HomeView: React.FC = () => {
       transition={{ duration: 0.5 }}
       className="home-content"
     >
+      <div className='home-watermark'>WESLEY'S</div>
+      
       <h1>Welcome to <span className="my-portfolio">MY</span></h1>
       <div className="welcome-container">
         <span><img src={PortfolioImg} alt="Portfolio logo" /></span>
