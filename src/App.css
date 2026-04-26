@@ -62,12 +62,47 @@ nav a {
   color: #F4ECEB;
   text-decoration: none;
   font-size: 1.2rem;
-  
+  position: relative;
+  display: inline-block;
+  padding-bottom: 8px;
 }
 
 nav a.router-link-exact-active {
   color: #F4ECEB;
-  text-decoration: underline;
+}
+
+@keyframes slideInLeft {
+  from { width: 0; opacity: 0; }
+  to { width: 60%; opacity: 1; }
+}
+
+@keyframes slideInRight {
+  from { width: 0; opacity: 0; }
+  to { width: 60%; opacity: 1; }
+}
+
+nav a.router-link-exact-active::before {
+  content: "";
+  position: absolute;
+  bottom: 4px;
+  left: 0;
+  height: 2px;
+  width: 60%;
+  background: linear-gradient(to right, #F4ECEB, transparent);
+  animation: slideInLeft 0.5s ease-out forwards;
+  border-radius: 2px;
+}
+
+nav a.router-link-exact-active::after {
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  right: 0;
+  height: 2px;
+  width: 60%;
+  background: linear-gradient(to left, #F4ECEB, transparent);
+  animation: slideInRight 0.5s ease-out forwards;
+  border-radius: 2px;
 }
 .container {
   display: flex;
