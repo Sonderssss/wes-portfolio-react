@@ -46,24 +46,28 @@
 }
 
 .btn {
-  background-color: #F4ECEB;
-  font-family: 'behance';
+  background-color: #B76E79;
   font-weight: bold;
-  color: #B76E79;
-  padding: 10px 20px;
-  border-left: 1px solid #B76E79;
-  border-bottom: 1px solid #B76E79;
-  border-top: none;
-  border-right: none;
-  border-radius: 10px;
+  color: #F4ECEB;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 4px;
   cursor: pointer;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  align-items: center;
+  align-self: flex-start;
+  gap: 0.5rem;
+  padding: 0.8rem 1.5rem;
+  font-size: 0.875rem;
+  margin-top: 1rem;
 }
 
 .btn:hover {
-  background-color: black;
-  color: #F4ECEB;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  transform: scale(1.10);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  background-color: #a05a66;
 }
 
 /* Responsive Media Queries */
