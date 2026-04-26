@@ -15,7 +15,7 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav style={{ position: "sticky", top: 0, zIndex: 1000, backgroundColor: "transparent", backdropFilter: "blur(10px)", borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
+    <nav style={{ position: "fixed", width: "100%", top: 0, zIndex: 1000, backgroundColor: "transparent", backdropFilter: "blur(10px)", borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
       <div className="nav-header">
         <span>WES</span>
         <button
