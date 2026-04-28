@@ -1,5 +1,4 @@
 import React from "react";
-import { motion } from "motion/react";
 import "./ProjectsView.css";
 import ProjectCard, { Project } from "../components/ProjectCard";
 

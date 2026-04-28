@@ -1,4 +1,4 @@
-import React from "react";
+
 import { motion } from "motion/react";
 import { Zap, Shield, LineChart, CheckCircle2 } from "lucide-react";
 
