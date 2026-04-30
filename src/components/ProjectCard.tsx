@@ -10,6 +10,8 @@ export interface Project {
   size: "large" | "small";
   description: string;
   codebase: string;
+  sourceCode?: string;
+  liveLink?: string;
 }
 
 const getTechIcon = (index: number) => {
@@ -67,8 +69,12 @@ const ProjectCard = ({
         <p className="card-desc-new">{project.description}</p>
         
         <div className="card-actions-new">
-          <button className="btn-primary">View Project</button>
-          <button className="btn-secondary">Source Code</button>
+          <a href={project.liveLink || "#"} target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ textDecoration: 'none', textAlign: 'center' }}>
+            View Project
+          </a>
+          <a href={project.sourceCode || "#"} target="_blank" rel="noopener noreferrer" className="btn-secondary" style={{ textDecoration: 'none', textAlign: 'center' }}>
+            Source Code
+          </a>
         </div>
       </div>
     </motion.div>

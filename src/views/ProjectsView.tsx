@@ -12,6 +12,8 @@ const projects: Project[] = [
     description:
       "A full-stack logistics management platform with real-time tracking, route optimization, and analytics dashboards.",
     codebase: "Python, BeautifulSoup, Google Sheets API",
+    sourceCode: "https://github.com/Sonderssss/aiesec_scrapper",
+    liveLink: "#",
   },
   {
     id: 2,
@@ -22,6 +24,8 @@ const projects: Project[] = [
     description:
       "Interactive dashboard for monitoring urban infrastructure metrics including traffic, energy, and public services.",
     codebase: "React JS",
+    sourceCode: "https://github.com/Sonderssss/subscription-tracker-frontend",
+    liveLink: "#",
   },
   {
     id: 3,
@@ -32,6 +36,8 @@ const projects: Project[] = [
     description:
       "A mobile app that helps users track their carbon footprint and suggests eco-friendly alternatives.",
     codebase: "Node.js, Express, MongoDB",
+    sourceCode: "https://github.com/Sonderssss/subscription-tracker",
+    liveLink: "#",
   },
 ];
 
