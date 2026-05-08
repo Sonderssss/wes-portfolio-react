@@ -16,7 +16,14 @@ const HomeView: React.FC = () => {
       transition={{ duration: 0.5 }}
       className="home-content"
     >
-      <div className='home-watermark'>WESLEY'S</div>
+      <motion.div 
+        className='home-watermark'
+        initial={{ opacity: 0, x: "-50%", y: "50%" }}
+        whileInView={{ opacity: 0.2, x: "-50%", y: "-50%" }}
+        transition={{ duration: 1, ease: "easeOut" }}
+      >
+        WESLEY'S
+      </motion.div>
       
       <h1>Welcome to <span className="my-portfolio">MY</span></h1>
       <div className="welcome-container">
