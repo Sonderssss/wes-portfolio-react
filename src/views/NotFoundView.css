@@ -9,7 +9,7 @@
 
 .not-found h1 {
   font-size: 5rem;
-  color: #F4ECEB;
+  color: #FFFFFF;
 }
 
 .not-found p {
@@ -17,12 +17,12 @@
 }
 
 .not-found a {
-  color: #F4ECEB;
+  color: #FFFFFF;
   font-weight: bold;
   font-size: 1.2rem;
   text-decoration: none;
 }
 
 .not-found a:hover {
-  color: #F4ECEB;
+  color: #FFFFFF;
 }

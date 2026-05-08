@@ -78,16 +78,16 @@ const AboutView: React.FC = () => {
                 display: "flex",
                 flexDirection: "column",
                 gap: "1rem",
-                backgroundImage: "linear-gradient(235deg, #b76e79 20%, #f4eceb 80%)",
-                borderLeft: "2px solid #b76e79",
-                borderBottom: "2px solid #b76e79",
+                backgroundColor: "white",
+                borderLeft: "2px solid black",
+                borderBottom: "2px solid black",
               }}
             >
               <div
                 className="icon-wrapper"
                 style={{
                   width: "fit-content",
-                  backgroundColor: "var(--stone-900)",
+                  backgroundColor: "black",
                   color: "white",
                 }}
               >
@@ -98,7 +98,7 @@ const AboutView: React.FC = () => {
                 style={{
                   fontSize: "1.25rem",
                   fontWeight: 600,
-                  color: "var(--stone-900)",
+                  color: "black",
                 }}
               >
                 {q.title}
@@ -106,7 +106,7 @@ const AboutView: React.FC = () => {
 
               <p
                 style={{
-                  color: "#a1a1aa",
+                  color: "black",
                   fontSize: "0.875rem",
                   lineHeight: 1.5,
                 }}

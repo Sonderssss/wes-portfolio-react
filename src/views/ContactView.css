@@ -13,7 +13,7 @@
   transform: translate(-50%, -50%);
   font-size: 15vw;
   font-weight: 900;
-  color: #f4eceb;
+  color: #FFFFFF;
   opacity: 0.15;
   z-index: 0;
   pointer-events: none;
@@ -41,7 +41,7 @@
   display: flex;
   flex-direction: column;
   padding: 2rem;
-  color: #f4eceb;
+  color: #FFFFFF;
   text-align: left;
 }
 
@@ -74,7 +74,7 @@
 
 .contact-detail-icon {
   margin-top: 0.15rem;
-  color: #f4eceb;
+  color: #FFFFFF;
 }
 
 .contact-detail-text h3 {
@@ -91,18 +91,18 @@
 }
 
 .contact-form-side {
-  background-color: #f4eceb;
+  background-color: #FFFFFF;
   border-radius: 8px;
   padding: 3rem;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
   display: flex;
   flex-direction: column;
-  color: #b76e79;
+  color: #FF49C1;
 }
 
 .contact-form-side .contact-heading {
   margin-bottom: 2rem;
-  color: #b76e79;
+  color: #FF49C1;
   text-align: left;
 }
 
@@ -123,7 +123,7 @@
   border: none;
   border-bottom: 1px solid rgba(183, 110, 121, 0.4);
   padding: 0.75rem 0;
-  color: #b76e79;
+  color: #FF49C1;
   font-size: 0.95rem;
   transition: border-color 0.3s ease;
   font-family: inherit;
@@ -138,7 +138,7 @@
 .modern-form input:focus,
 .modern-form textarea:focus {
   outline: none;
-  border-bottom-color: #b76e79;
+  border-bottom-color: #FF49C1;
 }
 
 .modern-form textarea {
@@ -149,8 +149,8 @@
 .send-btn {
   align-self: flex-start;
   margin-top: 1rem;
-  background-color: #b76e79;
-  color: #f4eceb;
+  background-color: #FF49C1;
+  color: #FFFFFF;
   border: none;
   padding: 1rem 2rem;
   font-size: 0.9rem;
@@ -202,7 +202,7 @@
 }
 
 .social-links a {
-  color: #f4eceb;
+  color: #FFFFFF;
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
@@ -214,8 +214,8 @@
 }
 
 .social-links a:hover {
-  color: #b76e79;
-  background-color: #f4eceb;
+  color: #FF49C1;
+  background-color: #FFFFFF;
   transform: translateY(-3px);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
