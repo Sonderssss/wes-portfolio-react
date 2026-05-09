@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { useActiveSection } from "../hooks/useActiveSection";
+import logoLab from "../assets/images/3DLogoLab.png";
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -26,7 +27,7 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav style={{ position: "fixed", width: "100%", top: 0, zIndex: 1000, backgroundColor: "transparent", backdropFilter: "blur(10px)", borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
+    <nav style={{ position: "fixed", left: 0, right: 0, top: 0, zIndex: 1000, backgroundColor: "transparent", backdropFilter: "blur(10px)", borderBottom: "1px solid rgba(255,255,255,0.1)", boxSizing: "border-box" }}>
       <div className="nav-header">
         <span>WES</span>
         <button
@@ -39,6 +40,7 @@ const Navbar: React.FC = () => {
         </button>
       </div>
       <div className={`container ${isMenuOpen ? "menu-open" : ""}`}>
+        <img src={logoLab} alt="Logo" className="mobile-menu-img" />
         <a
           href="#home"
           className={activeSection === "home" ? "router-link-exact-active" : ""}
