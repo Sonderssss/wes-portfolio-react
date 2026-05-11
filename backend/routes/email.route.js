@@ -5,13 +5,13 @@ const emailRouter = express.Router();
 
 emailRouter.post("/api/send-email", async (req, res) => {
   try {
-    const { to, subject, message } = req.body;
+    const { name, email, phone, message } = req.body;
 
-    if (!to || !subject || !message) {
+    if (!name || !email || !message) {
       return res.status(400).json({ error: "Missing fields" });
     }
 
-    const result = await sendEmail({ to, subject, message });
+    const result = await sendEmail({ name, email, phone, message });
 
     res.status(200).json({
       success: true,

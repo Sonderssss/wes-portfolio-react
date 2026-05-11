@@ -1,18 +1,22 @@
 import { Resend } from "resend";
-import { RESEND_API_KEY } from "../services/env.js";
+import { RESEND_API_KEY, TO_EMAIL } from "../services/env.js";
 import emailTemplate from "../template/email.template.js";
 
 const resend = new Resend(RESEND_API_KEY);
 
-export const sendEmail = async (to, subject, html) => {
+export const sendEmail = async (name, email, phone, message) => {
   try {
-    const email = await resend.emails.send({
-      from,
-      to,
-      subject,
-      html: emailTemplate(to, html),
+    const html = emailTemplate(name, email, phone, message);
+
+    const response = await resend.emails.send({
+      from: "Portfolio Contact <contact@yourdomain.com>",
+      to: TO_EMAIL,
+      subject: `New Message from ${name}`,
+      replyTo: email,
+      html,
     });
-    return email;
+
+    return response;
   } catch (error) {
     console.log("Error sending email:", error);
     throw new Error("Failed to send email");

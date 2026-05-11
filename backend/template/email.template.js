@@ -1,61 +1,38 @@
-const emailTemplate = (senderEmail, message) => {
-  return;
-  `
-  <div
-    style="
-      font-family: Arial, sans-serif;
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 20px;
-      border: 1px solid #e5e5e5;
-      border-radius: 8px;
-      background-color: #ffffff;
-    "
-  >
-    <h2 style="color: #333333;">
-      New Contact Message
-    </h2>
+const emailTemplate = (name, email, phone, message) => {
+  return `
+    <div
+      style="
+        font-family: Arial, sans-serif;
+        max-width: 600px;
+        margin: auto;
+        padding: 20px;
+      "
+    >
 
-    <div style="margin-bottom: 20px;">
-      <p style="margin: 0; color: #555555;">
-        <strong>From:</strong>
+      <h2>New Message</h2>
+
+      <p>
+        <strong>Name:</strong> ${name}
       </p>
 
-      <p
-        style="
-          margin-top: 5px;
-          padding: 10px;
-          background-color: #f5f5f5;
-          border-radius: 4px;
-          color: #222222;
-        "
-      >
-        ${senderEmail}
-      </p>
-    </div>
-
-    <div>
-      <p style="margin: 0; color: #555555;">
-        <strong>Message:</strong>
+      <p>
+        <strong>Email:</strong> ${email}
       </p>
 
-      <div
-        style="
-          margin-top: 5px;
-          padding: 15px;
-          background-color: #f9f9f9;
-          border-left: 4px solid #333333;
-          border-radius: 4px;
-          color: #222222;
-          line-height: 1.6;
-          white-space: pre-wrap;
-        "
-      >
+      <p>
+        <strong>Phone:</strong> ${phone || "Not provided"}
+      </p>
+
+      <hr />
+
+      <h3>Message</h3>
+
+      <p>
         ${message}
-      </div>
+      </p>
+
     </div>
-  </div>
-`;
+  `;
 };
 
 export default emailTemplate;
