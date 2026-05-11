@@ -1,8 +1,9 @@
 import express from "express";
+import { sendEmail } from "../services/email.service.js";
 
-const router = express.Router();
+const emailRouter = express.Router();
 
-router.post("/send-email", (req, res) => {
+emailRouter.post("/send-email", async (req, res) => {
   try {
     const { to, subject, message } = req.body;
 
@@ -17,9 +18,8 @@ router.post("/send-email", (req, res) => {
       data: result,
     });
   } catch (error) {
-    res.status(500)
-    .json({ error: "Failed to send email" });
+    res.status(500).json({ error: "Failed to send email" });
   }
 });
 
-export default router;
+export default emailRouter;

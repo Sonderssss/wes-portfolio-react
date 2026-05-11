@@ -1,0 +1,8 @@
+import { Router } from "express";
+import emailRouter from "./email.route.js";
+
+const router = Router();
+
+router.use(emailRouter);
+
+export default router;
