@@ -4,13 +4,13 @@ const router = express.Router();
 
 router.post("/send-email", (req, res) => {
   try {
-    const { name, email, message } = req.body;
+    const { to, subject, message } = req.body;
 
     if (!to || !subject || !message) {
       return res.status(400).json({ error: "Missing fields" });
     }
 
-      const result = await sendEmail({ to, subject, message });
+    const result = await sendEmail({ to, subject, message });
 
     res.status(200).json({
       success: true,
