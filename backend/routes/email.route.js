@@ -3,7 +3,7 @@ import { sendEmail } from "../services/email.service.js";
 
 const emailRouter = express.Router();
 
-emailRouter.post("/send-email", async (req, res) => {
+emailRouter.post("/api/send-email", async (req, res) => {
   try {
     const { to, subject, message } = req.body;
 
