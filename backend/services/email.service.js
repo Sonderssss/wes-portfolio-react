@@ -9,7 +9,7 @@ export const sendEmail = async (name, email, phone, message) => {
     const html = emailTemplate(name, email, phone, message);
 
     const response = await resend.emails.send({
-      from: "Portfolio Contact <contact@yourdomain.com>",
+      from: "onboarding@resend.dev",
       to: TO_EMAIL,
       subject: `New Message from ${name}`,
       replyTo: email,
