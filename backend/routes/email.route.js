@@ -1,5 +1,6 @@
 import express from "express";
 import { sendEmail } from "../services/email.service.js";
+import { validateEmailData } from "../services/validator.js";
 
 const emailRouter = express.Router();
 
@@ -11,7 +12,19 @@ emailRouter.post("/api/send-email", async (req, res) => {
       return res.status(400).json({ error: "Missing fields" });
     }
 
-    const result = await sendEmail(name, email, phone, message);
+    const validatedData = validateEmailData({
+      name,
+      email,
+      phone,
+      message,
+    });
+
+    const result = await sendEmail(
+      validatedData.name,
+      validatedData.email,
+      validatedData.phone,
+      validatedData.message,
+    );
 
     res.status(200).json({
       success: true,
