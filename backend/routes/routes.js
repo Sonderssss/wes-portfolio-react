@@ -3,6 +3,6 @@ import emailRouter from "./email.route.js";
 
 const router = Router();
 
-router.use(emailRouter);
+router.use("/api", emailRouter);
 
 export default router;
