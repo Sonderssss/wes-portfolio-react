@@ -11,7 +11,7 @@ emailRouter.post("/api/send-email", async (req, res) => {
       return res.status(400).json({ error: "Missing fields" });
     }
 
-    const result = await sendEmail({ name, email, phone, message });
+    const result = await sendEmail(name, email, phone, message);
 
     res.status(200).json({
       success: true,
