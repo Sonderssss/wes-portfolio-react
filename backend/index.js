@@ -1,11 +1,16 @@
 import express from "express";
 import cors from "cors";
-import { PORT } from "../backend/services/env.js";
-import routes from "../backend/routes/routes.js";
+import { PORT, CORS_URL } from "./services/env.js";
+import routes from "./routes/routes.js";
 
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: CORS_URL,
+    credentials: true,
+  }),
+);
 app.use(express.json());
 app.use(routes);
 
