@@ -1,4 +1,5 @@
 import Joi from "joi";
+import sanitizeHtml from "sanitize-html";
 
 export const validateEmailData = (data) => {
   const schema = Joi.object({
@@ -21,5 +22,19 @@ export const validateEmailData = (data) => {
     console.log("Validation error:", error.details[0].message);
   }
 
-  return value;
+  return {
+    ...value,
+    name: sanitizeHtml(value.name, { allowedTags: [], allowedAttributes: {} }),
+    email: sanitizeHtml(value.email, {
+      allowedTags: [],
+      allowedAttributes: {},
+    }),
+    phone: value.phone
+      ? sanitizeHtml(value.phone, { allowedTags: [], allowedAttributes: {} })
+      : undefined,
+    message: sanitizeHtml(value.message, {
+      allowedTags: [],
+      allowedAttributes: {},
+    }),
+  };
 };
