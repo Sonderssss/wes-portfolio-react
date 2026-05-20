@@ -4,7 +4,7 @@ import emailTemplate from "../template/email.template.js";
 
 const resend = new Resend(RESEND_API_KEY);
 
-export const sendEmail = async (name, email, phone, message) => {
+export const sendEmail = async ({ name, email, phone, message }) => {
   try {
     const html = emailTemplate(name, email, phone, message);
 
