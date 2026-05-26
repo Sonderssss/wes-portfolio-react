@@ -16,6 +16,11 @@ app.use(
 // app.options("*", cors()); // Enable pre-flight for all routes
 app.use(express.json());
 
+app.use((req, res, next) => {
+  console.log("Incoming request:", req.method, req.url);
+  next();
+});
+
 app.use(routes);
 
 app.get("/", (req, res) => {
