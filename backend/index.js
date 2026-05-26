@@ -5,15 +5,16 @@ import routes from "./routes/routes.js";
 
 const app = express();
 
-app.use(
-  cors({
-    origin: [CORS_URL, WEBSITE_URL],
-    methods: ["GET", "POST", "OPTIONS"],
-    credentials: true,
-  }),
-);
+const corsOptions = {
+  origin: [CORS_URL, WEBSITE_URL],
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true,
+};
 
-// app.options("*", cors()); // Enable pre-flight for all routes
+app.use(cors(corsOptions));
+
+app.options(/.*/, cors(corsOptions)); // Enable pre-flight for all routes
 app.use(express.json());
 
 app.use((req, res, next) => {
