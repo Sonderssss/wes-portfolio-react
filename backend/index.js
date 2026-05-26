@@ -8,10 +8,14 @@ const app = express();
 app.use(
   cors({
     origin: [CORS_URL, WEBSITE_URL],
+    methods: ["GET", "POST", "OPTIONS"],
     credentials: true,
   }),
 );
+
+app.options("*", cors()); // Enable pre-flight for all routes
 app.use(express.json());
+
 app.use(routes);
 
 app.get("/", (req, res) => {
