@@ -13,7 +13,7 @@ app.use(
   }),
 );
 
-app.options("*", cors()); // Enable pre-flight for all routes
+// app.options("*", cors()); // Enable pre-flight for all routes
 app.use(express.json());
 
 app.use(routes);
