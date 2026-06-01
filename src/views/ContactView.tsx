@@ -33,17 +33,9 @@ const ContactView: React.FC = () => {
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
 
-  const submitForm = async (e: React.FormEvent) => {
+    const submitForm = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Name:", name);
-    console.log("Phone:", phone);
-    console.log("Email:", email);
-    console.log("Message:", message);
-    setName("");
-    setPhone("");
-    setEmail("");
-    setMessage("");
-
+    
     setLoading(true);
     setSuccess("");
     setError("");
@@ -59,6 +51,7 @@ const ContactView: React.FC = () => {
       const response = await sendEmail(payload);
 
       setSuccess(response.message || "Message sent successfully!");
+      // Reset only when request completes successfully
       setName("");
       setPhone("");
       setEmail("");
@@ -69,6 +62,7 @@ const ContactView: React.FC = () => {
       setLoading(false);
     }
   };
+
 
   return (
     <motion.div
