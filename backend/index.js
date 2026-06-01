@@ -5,8 +5,21 @@ import routes from "./routes/routes.js";
 
 const app = express();
 
+const parseOrigins = (value) => {
+  if (!value) return [];
+  return value
+    .split(",")
+    .map((url) => url.replace(/['"]/g, "").trim())
+    .filter(Boolean);
+};
+
+const allowedOrigins = [
+  ...parseOrigins(CORS_URL),
+  ...parseOrigins(WEBSITE_URL),
+];
+
 const corsOptions = {
-  origin: [CORS_URL, WEBSITE_URL],
+  origin: allowedOrigins,
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,
