@@ -1,4 +1,5 @@
 import React from "react";
+import { LazyMotion, domAnimation, MotionConfig } from "motion/react";
 import HomeView from "./views/HomeView";
 import ProjectsView from "./views/ProjectsView";
 import AboutView from "./views/AboutView";
@@ -8,9 +9,10 @@ import "./App.css";
 
 const App: React.FC = () => {
   return (
-    <>
-      <Navbar />
-      <main>
+    <LazyMotion features={domAnimation} strict>
+      <MotionConfig reducedMotion="user">
+        <Navbar />
+        <main>
         <section id="home" className="page-section">
           <HomeView />
         </section>
@@ -41,7 +43,8 @@ const App: React.FC = () => {
           <ContactView />
         </section>
       </main>
-    </>
+      </MotionConfig>
+    </LazyMotion>
   );
 };
 

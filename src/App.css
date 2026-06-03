@@ -90,6 +90,16 @@ body {
 
 nav {
   padding: 30px;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 10;
+  background-color: transparent;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-sizing: border-box;
 }
 
 nav a {
@@ -206,7 +216,7 @@ span {
     align-items: center;
     width: 100%;
     position: relative;
-    z-index: 1001;
+    z-index: 12;
   }
 
   .hamburger-menu {
@@ -242,7 +252,7 @@ span {
     background-color: rgba(0, 0, 0, 0.85);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    z-index: 1000;
+    z-index: 11;
     transition: opacity 0.4s ease, visibility 0.4s ease;
   }
 
