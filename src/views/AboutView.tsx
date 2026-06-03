@@ -1,41 +1,42 @@
 import React from "react";
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import { Cpu, Globe, Code2 } from "lucide-react";
 import "./AboutView.css";
 
-const AboutView: React.FC = () => {
-  const techStack = [
-    "JavaScript",
-    "TypeScript",
-    "Python",
-    "Node.js",
-    "Express.js",
-    "MongoDB",
-    "React",
-    "Flutter",
-    "Docker",
-  ];
+const techStack = [
+  "JavaScript",
+  "TypeScript",
+  "Python",
+  "Node.js",
+  "Express.js",
+  "MongoDB",
+  "React",
+  "Flutter",
+  "Docker",
+];
 
-  const qualities = [
-    {
-      icon: <Cpu className="h-5 w-5" />,
-      title: "Backend Engineer",
-      desc: "Building robust and scalable server-side architectures.",
-    },
-    {
-      icon: <Globe className="h-5 w-5" />,
-      title: "Fullstack Developer",
-      desc: "Crafting seamless end-to-end digital experiences.",
-    },
-    {
-      icon: <Code2 className="h-5 w-5" />,
-      title: "Systems Design Architect",
-      desc: "Designing complex systems with internal harmony.",
-    },
-  ];
+const qualities = [
+  {
+    icon: <Cpu className="h-5 w-5" />,
+    title: "Backend Engineer",
+    desc: "Building robust and scalable server-side architectures.",
+  },
+  {
+    icon: <Globe className="h-5 w-5" />,
+    title: "Fullstack Developer",
+    desc: "Crafting seamless end-to-end digital experiences.",
+  },
+  {
+    icon: <Code2 className="h-5 w-5" />,
+    title: "Systems Design Architect",
+    desc: "Designing complex systems with internal harmony.",
+  },
+];
+
+const AboutView: React.FC = () => {
 
   return (
-    <motion.div
+    <m.div
       initial={{ opacity: 0, y: 25 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
@@ -61,27 +62,11 @@ const AboutView: React.FC = () => {
       <div className="tech-section">
         <h2 className="tech-section-title">Core Expertise</h2>
 
-        <div
-          className="projects-grid"
-          style={{
-            height: "auto",
-            gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-          }}
-        >
-          {qualities.map((q, i) => (
+        <div className="about-projects-grid">
+          {qualities.map((q) => (
             <div
-              key={i}
-              className="project-card"
-              style={{
-                padding: "2rem",
-                height: "auto",
-                display: "flex",
-                flexDirection: "column",
-                gap: "1rem",
-                backgroundColor: "white",
-                borderLeft: "2px solid black",
-                borderBottom: "2px solid black",
-              }}
+              key={q.title}
+              className="about-project-card"
             >
               <div
                 className="icon-wrapper"
@@ -122,14 +107,14 @@ const AboutView: React.FC = () => {
         <h2 className="tech-section-title">Tech Stack</h2>
 
         <div className="tech-stack">
-          {techStack.map((tech, i) => (
-            <span key={i} className="tech-tag">
+          {techStack.map((tech) => (
+            <span key={tech} className="tech-tag">
               {tech}
             </span>
           ))}
         </div>
       </div>
-    </motion.div>
+    </m.div>
   );
 };
 

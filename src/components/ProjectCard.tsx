@@ -1,5 +1,5 @@
 
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import { Zap, Shield, LineChart, CheckCircle2 } from "lucide-react";
 
 export interface Project {
@@ -16,10 +16,10 @@ export interface Project {
 
 const getTechIcon = (index: number) => {
   const icons = [
-    <Zap className="h-3 w-3" />,
-    <Shield className="h-3 w-3" />,
-    <LineChart className="h-3 w-3" />,
-    <CheckCircle2 className="h-3 w-3" />,
+    <Zap key="zap" className="h-3 w-3" />,
+    <Shield key="shield" className="h-3 w-3" />,
+    <LineChart key="chart" className="h-3 w-3" />,
+    <CheckCircle2 key="check" className="h-3 w-3" />,
   ];
   return icons[index % icons.length];
 };
@@ -32,7 +32,7 @@ const ProjectCard = ({
   index: number;
 }) => {
   return (
-    <motion.div
+    <m.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
@@ -55,12 +55,15 @@ const ProjectCard = ({
         </div>
         
         <div className="card-top-tech">
-          {project.codebase.split(",").map((tech, i) => (
-            <span key={i} className="tech-pill">
-              {getTechIcon(i)}
-              {tech.trim()}
-            </span>
-          ))}
+          {project.codebase.split(",").map((tech, i) => {
+            const trimmedTech = tech.trim();
+            return (
+              <span key={trimmedTech} className="tech-pill">
+                {getTechIcon(i)}
+                {trimmedTech}
+              </span>
+            );
+          })}
         </div>
       </div>
 
@@ -77,7 +80,7 @@ const ProjectCard = ({
           </a>
         </div>
       </div>
-    </motion.div>
+    </m.div>
   );
 };
 

@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { motion } from "motion/react";
+import React, { useReducer } from "react";
+import { m } from "motion/react";
 import { Mail, Phone, MapPin, Github } from "lucide-react";
 import "./ContactView.css";
 //@ts-ignore
@@ -23,22 +23,58 @@ const PinterestIcon = ({
   </svg>
 );
 
+interface ContactState {
+  name: string;
+  phone: string;
+  email: string;
+  message: string;
+  loading: boolean;
+  success: string;
+  error: string;
+}
+
+type ContactAction =
+  | { type: "SET_FIELD"; field: "name" | "phone" | "email" | "message"; value: string }
+  | { type: "SUBMIT_START" }
+  | { type: "SUBMIT_SUCCESS"; message: string }
+  | { type: "SUBMIT_ERROR"; error: string };
+
+const initialState: ContactState = {
+  name: "",
+  phone: "",
+  email: "",
+  message: "",
+  loading: false,
+  success: "",
+  error: "",
+};
+
+function contactReducer(state: ContactState, action: ContactAction): ContactState {
+  switch (action.type) {
+    case "SET_FIELD":
+      return { ...state, [action.field]: action.value };
+    case "SUBMIT_START":
+      return { ...state, loading: true, success: "", error: "" };
+    case "SUBMIT_SUCCESS":
+      return {
+        ...initialState,
+        success: action.message,
+      };
+    case "SUBMIT_ERROR":
+      return { ...state, loading: false, error: action.error };
+    default:
+      return state;
+  }
+}
+
 const ContactView: React.FC = () => {
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+  const [state, dispatch] = useReducer(contactReducer, initialState);
+  const { name, phone, email, message, loading, success, error } = state;
 
-  const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState("");
-  const [error, setError] = useState("");
-
-    const submitForm = async (e: React.FormEvent) => {
+  const submitForm = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    setLoading(true);
-    setSuccess("");
-    setError("");
+    dispatch({ type: "SUBMIT_START" });
 
     try {
       const payload = {
@@ -50,22 +86,15 @@ const ContactView: React.FC = () => {
 
       const response = await sendEmail(payload);
 
-      setSuccess(response.message || "Message sent successfully!");
-      // Reset only when request completes successfully
-      setName("");
-      setPhone("");
-      setEmail("");
-      setMessage("");
-    } catch (error: any) {
-      setError(error.response?.data?.message || "Failed to send message");
-    } finally {
-      setLoading(false);
+      dispatch({ type: "SUBMIT_SUCCESS", message: response.message || "Message sent successfully!" });
+    } catch (err: any) {
+      dispatch({ type: "SUBMIT_ERROR", error: err.response?.data?.message || "Failed to send message" });
     }
   };
 
 
   return (
-    <motion.div
+    <m.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
@@ -130,8 +159,9 @@ const ContactView: React.FC = () => {
                 type="text"
                 placeholder="Your name"
                 value={name}
-                onChange={(e) => setName(e.target.value)}
+                onChange={(e) => dispatch({ type: "SET_FIELD", field: "name", value: e.target.value })}
                 required
+                aria-label="Your name"
               />
             </div>
 
@@ -140,7 +170,8 @@ const ContactView: React.FC = () => {
                 type="tel"
                 placeholder="Your phone"
                 value={phone}
-                onChange={(e) => setPhone(e.target.value)}
+                onChange={(e) => dispatch({ type: "SET_FIELD", field: "phone", value: e.target.value })}
+                aria-label="Your phone number"
               />
             </div>
 
@@ -149,8 +180,9 @@ const ContactView: React.FC = () => {
                 type="email"
                 placeholder="Your e-mail"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => dispatch({ type: "SET_FIELD", field: "email", value: e.target.value })}
                 required
+                aria-label="Your e-mail"
               />
             </div>
 
@@ -158,9 +190,10 @@ const ContactView: React.FC = () => {
               <textarea
                 placeholder="Message"
                 value={message}
-                onChange={(e) => setMessage(e.target.value)}
+                onChange={(e) => dispatch({ type: "SET_FIELD", field: "message", value: e.target.value })}
                 required
                 rows={1}
+                aria-label="Message"
               ></textarea>
             </div>
 
@@ -194,7 +227,7 @@ const ContactView: React.FC = () => {
           </a>
         </div>
       </div>
-    </motion.div>
+    </m.div>
   );
 };
 
