@@ -9,8 +9,10 @@ const parseOrigins = (value) => {
   if (!value) return [];
   return value
     .split(",")
-    .map((url) => url.replace(/['"]/g, "").trim())
-    .filter(Boolean);
+    .flatMap((url) => {
+      const trimmed = url.replace(/['"]/g, "").trim();
+      return trimmed ? [trimmed] : [];
+    });
 };
 
 const allowedOrigins = [
