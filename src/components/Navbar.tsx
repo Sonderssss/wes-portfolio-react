@@ -27,10 +27,11 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav style={{ position: "fixed", left: 0, right: 0, top: 0, zIndex: 1000, backgroundColor: "transparent", backdropFilter: "blur(10px)", borderBottom: "1px solid rgba(255,255,255,0.1)", boxSizing: "border-box" }}>
+    <nav>
       <div className="nav-header">
         <span>WES</span>
         <button
+          type="button"
           className="hamburger-menu"
           onClick={toggleMenu}
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
