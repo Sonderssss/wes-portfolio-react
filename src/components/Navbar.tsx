@@ -82,6 +82,11 @@ const Navbar: React.FC = () => {
             CONTACT
           </Link>
         </div>
+
+        {/* Desktop Right-aligned logo image */}
+        <div className="nav-logo-image-right">
+          <img src={logoLab} alt="WES logo" />
+        </div>
       </div>
     </nav>
   );
