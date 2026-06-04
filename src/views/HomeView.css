@@ -42,14 +42,10 @@
 }
 
 .hero-title-box {
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  padding: 15px 30px;
   font-size: 3.5rem;
   font-weight: normal;
   letter-spacing: 0.05em;
-  width: fit-content;
-  line-height: 1;
-  display: inline-block;
+  line-height: 1.1;
 }
 
 .hero-title-main {
@@ -190,7 +186,6 @@
   
   .hero-title-box {
     font-size: 2.6rem;
-    padding: 10px 20px;
   }
   
   .hero-title-main {
@@ -205,4 +200,10 @@
   .project-preview-image-wrapper {
     height: 200px;
   }
+}
+
+/* Home Page Background Override */
+body.home-page-active {
+  background: #0e0f11 !important;
+  animation: none !important;
 }

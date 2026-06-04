@@ -5,6 +5,13 @@ import PortfolioImg from '../assets/images/Portfolio.png'
 import './HomeView.css'
 
 const HomeView: React.FC = () => {
+  React.useEffect(() => {
+    document.body.classList.add("home-page-active");
+    return () => {
+      document.body.classList.remove("home-page-active");
+    };
+  }, []);
+
   return (
     <m.div
       initial={{ opacity: 0 }}

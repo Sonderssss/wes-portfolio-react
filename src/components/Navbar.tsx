@@ -82,9 +82,6 @@ const Navbar: React.FC = () => {
             CONTACT
           </Link>
         </div>
-
-        {/* Desktop Right spacer to balance the flex layout */}
-        <div className="nav-right-spacer"></div>
       </div>
     </nav>
   );

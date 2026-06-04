@@ -183,11 +183,10 @@ nav a.router-link-exact-active::after {
 .nav-logo-link {
   text-decoration: none;
   display: inline-block;
+  z-index: 2;
 }
 
 .nav-logo-box {
-  border: 1.5px solid #d58e32;
-  padding: 6px 18px;
   display: inline-flex;
   align-items: center;
   gap: 12px;
@@ -198,7 +197,6 @@ nav a.router-link-exact-active::after {
 }
 
 .nav-logo-box:hover {
-  background-color: rgba(213, 142, 50, 0.1);
   transform: scale(1.02);
 }
 
@@ -214,14 +212,13 @@ nav a.router-link-exact-active::after {
 }
 
 .nav-links-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   align-items: center;
   gap: 30px;
-}
-
-.nav-right-spacer {
-  width: 145px; /* balanced width of the logo box to center the links */
-  display: block;
+  z-index: 1;
 }
 
 span {
@@ -339,8 +336,7 @@ span {
     transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.1s, opacity 1.2s ease 0.1s;
   }
 
-  .nav-logo-link,
-  .nav-right-spacer {
+  .nav-logo-link {
     display: none;
   }
 
@@ -349,6 +345,8 @@ span {
     flex-direction: column;
     gap: 20px;
     align-items: center;
+    position: static;
+    transform: none;
   }
 
   .container a {
