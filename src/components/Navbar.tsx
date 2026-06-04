@@ -42,15 +42,24 @@ const Navbar: React.FC = () => {
       </div>
       <div className={`container ${isMenuOpen ? "menu-open" : ""}`}>
         <img src={logoLab} alt="Logo" className="mobile-menu-img" />
-        <Link
-          to="/"
-          className={location.pathname === "/" ? "router-link-exact-active active" : ""}
-          onClick={closeMenu}
-        >
-          HOME
+        
+        {/* Desktop Left-aligned Logo */}
+        <Link to="/" className="nav-logo-link" onClick={closeMenu}>
+          <div className="nav-logo-box">
+            <span className="logo-triangle">▲</span>
+            <span className="logo-text">W E S</span>
+          </div>
         </Link>
-        <span className="desktop-logo">WES</span>
-        <div className="other-links">
+        
+        {/* Desktop Centered Links / Mobile links */}
+        <div className="nav-links-center">
+          <Link
+            to="/"
+            className={location.pathname === "/" ? "router-link-exact-active active" : ""}
+            onClick={closeMenu}
+          >
+            HOME
+          </Link>
           <Link
             to="/projects"
             className={location.pathname === "/projects" ? "router-link-exact-active active" : ""}
@@ -73,6 +82,9 @@ const Navbar: React.FC = () => {
             CONTACT
           </Link>
         </div>
+
+        {/* Desktop Right spacer to balance the flex layout */}
+        <div className="nav-right-spacer"></div>
       </div>
     </nav>
   );

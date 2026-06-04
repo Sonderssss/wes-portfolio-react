@@ -167,8 +167,9 @@ nav a.router-link-exact-active::after {
 .container {
   display: flex;
   justify-content: space-between;
-  max-width: 1000px;
-  width: 90%;
+  align-items: center;
+  max-width: 1100px;
+  width: 95%;
   margin: 0 auto;
   position: relative;
 }
@@ -179,10 +180,48 @@ nav a.router-link-exact-active::after {
   transform: translateX(-50%);
 }
 
-.other-links {
+.nav-logo-link {
+  text-decoration: none;
+  display: inline-block;
+}
+
+.nav-logo-box {
+  border: 1.5px solid #d58e32;
+  padding: 6px 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Magero', serif;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  transition: all 0.3s ease;
+}
+
+.nav-logo-box:hover {
+  background-color: rgba(213, 142, 50, 0.1);
+  transform: scale(1.02);
+}
+
+.logo-triangle {
+  font-size: 0.85rem;
+  color: #FFFFFF;
+}
+
+.logo-text {
+  font-size: 1.1rem;
+  color: #FFFFFF;
+  font-weight: bold;
+}
+
+.nav-links-center {
   display: flex;
   align-items: center;
-  gap: 25px;
+  gap: 30px;
+}
+
+.nav-right-spacer {
+  width: 145px; /* balanced width of the logo box to center the links */
+  display: block;
 }
 
 span {
@@ -300,7 +339,12 @@ span {
     transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.1s, opacity 1.2s ease 0.1s;
   }
 
-  .other-links {
+  .nav-logo-link,
+  .nav-right-spacer {
+    display: none;
+  }
+
+  .nav-links-center {
     display: flex;
     flex-direction: column;
     gap: 20px;
