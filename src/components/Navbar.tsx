@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Menu, X } from "lucide-react";
-import { useActiveSection } from "../hooks/useActiveSection";
+import { Link, useLocation } from "react-router-dom";
 import logoLab from "../assets/images/3DLogoLab.png";
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const activeSection = useActiveSection(["home", "projects", "about", "contact"]);
+  const location = useLocation();
 
   React.useEffect(() => {
     if (isMenuOpen) {
@@ -42,36 +42,36 @@ const Navbar: React.FC = () => {
       </div>
       <div className={`container ${isMenuOpen ? "menu-open" : ""}`}>
         <img src={logoLab} alt="Logo" className="mobile-menu-img" />
-        <a
-          href="#home"
-          className={activeSection === "home" ? "router-link-exact-active" : ""}
+        <Link
+          to="/"
+          className={location.pathname === "/" ? "router-link-exact-active active" : ""}
           onClick={closeMenu}
         >
           HOME
-        </a>
+        </Link>
         <span className="desktop-logo">WES</span>
         <div className="other-links">
-          <a
-            href="#projects"
-            className={activeSection === "projects" ? "router-link-exact-active" : ""}
+          <Link
+            to="/projects"
+            className={location.pathname === "/projects" ? "router-link-exact-active active" : ""}
             onClick={closeMenu}
           >
             PROJECTS
-          </a>
-          <a
-            href="#about"
-            className={activeSection === "about" ? "router-link-exact-active" : ""}
+          </Link>
+          <Link
+            to="/about"
+            className={location.pathname === "/about" ? "router-link-exact-active active" : ""}
             onClick={closeMenu}
           >
             ABOUT
-          </a>
-          <a
-            href="#contact"
-            className={activeSection === "contact" ? "router-link-exact-active" : ""}
+          </Link>
+          <Link
+            to="/contact"
+            className={location.pathname === "/contact" ? "router-link-exact-active active" : ""}
             onClick={closeMenu}
           >
             CONTACT
-          </a>
+          </Link>
         </div>
       </div>
     </nav>
