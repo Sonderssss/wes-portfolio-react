@@ -1,5 +1,5 @@
 import React from "react";
-import { m } from "motion/react";
+import { m, Variants } from "motion/react";
 import { Cpu, Globe, Code2 } from "lucide-react";
 import "./AboutView.css";
 
@@ -34,87 +34,131 @@ const qualities = [
 ];
 
 const AboutView: React.FC = () => {
+  React.useEffect(() => {
+    document.body.classList.add("about-page-active");
+    return () => {
+      document.body.classList.remove("about-page-active");
+    };
+  }, []);
+
+  const textContainerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.1,
+      },
+    },
+  };
+
+  const textItemVariants: Variants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: [0.215, 0.61, 0.355, 1] as const },
+    },
+  };
+
+  const introVariants: Variants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, delay: 0.6, ease: "easeOut" as const },
+    },
+  };
+
+  const dividerVariants: Variants = {
+    hidden: { scale: 0, opacity: 0 },
+    visible: {
+      scale: 1,
+      opacity: 1,
+      transition: { duration: 1.2, ease: "easeInOut" as const },
+    },
+  };
 
   return (
-    <m.div
-      initial={{ opacity: 0, y: 25 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.9 }}
-      className="about-container"
-    >
-      <div className="about-header">
-        <h1 className="about-title">
-          Engineering with <br />
-          Deep Curiosity.
-        </h1>
+    <div className="about-container">
+      {/* Top Split Hero Section */}
+      <div className="about-hero-split">
+        {/* Left Side: Introduction */}
+        <m.div
+          initial="hidden"
+          animate="visible"
+          variants={introVariants}
+          className="about-intro-side"
+        >
+          <h2 className="about-intro-title">I am Wesley Waweru,</h2>
+          <p className="about-intro-text">
+            I am a developer driven by the internal mechanics of software systems.
+          </p>
+          <blockquote className="about-intro-quote">
+            "with a keen curiosity on not just how things are built but how they
+            work together internally to create what you see"
+          </blockquote>
+        </m.div>
 
-        <p className="about-subtitle">
-          I am a developer driven by the internal mechanics of software systems.
-        </p>
+        {/* Center Divider */}
+        <m.div
+          initial="hidden"
+          animate="visible"
+          variants={dividerVariants}
+          className="about-divider"
+        />
+
+        {/* Right Side: Typography */}
+        <m.div
+          initial="hidden"
+          animate="visible"
+          variants={textContainerVariants}
+          className="about-typography-side"
+        >
+          <m.div className="typography-row" variants={textItemVariants}>
+            <span className="word-get">GET</span>
+          </m.div>
+          <m.div className="typography-row" variants={textItemVariants}>
+            <span className="word-know">KNOW</span>
+            <m.span className="word-to" variants={textItemVariants}>
+              TO
+            </m.span>
+          </m.div>
+          <m.div className="typography-row" variants={textItemVariants}>
+            <span className="word-me">ME</span>
+          </m.div>
+        </m.div>
       </div>
 
-      <blockquote className="about-quote">
-        "with a keen curiosity on not just how things are built but how they
-        work together internally to create what you see"
-      </blockquote>
-
-      <div className="tech-section">
-        <h2 className="tech-section-title">Core Expertise</h2>
-
-        <div className="about-projects-grid">
-          {qualities.map((q) => (
-            <div
-              key={q.title}
-              className="about-project-card"
-            >
-              <div
-                className="icon-wrapper"
-                style={{
-                  width: "fit-content",
-                  backgroundColor: "black",
-                  color: "white",
-                }}
-              >
-                {q.icon}
+      {/* Bottom Section: Core Expertise & Tech Stack */}
+      <div className="about-details-section">
+        {/* Core Expertise stacked and left-aligned */}
+        <div className="about-expertise-container">
+          <h2 className="section-header-title">Core Expertise</h2>
+          <div className="expertise-grid-new">
+            {qualities.map((q, idx) => (
+              <div key={idx} className="expertise-item">
+                <div className="expertise-icon">{q.icon}</div>
+                <h3 className="expertise-title">{q.title}</h3>
+                <p className="expertise-desc">{q.desc}</p>
               </div>
+            ))}
+          </div>
+        </div>
 
-              <h3
-                style={{
-                  fontSize: "1.25rem",
-                  fontWeight: 600,
-                  color: "black",
-                }}
-              >
-                {q.title}
-              </h3>
-
-              <p
-                style={{
-                  color: "black",
-                  fontSize: "0.875rem",
-                  lineHeight: 1.5,
-                }}
-              >
-                {q.desc}
-              </p>
-            </div>
-          ))}
+        {/* Tech Stack below core expertise */}
+        <div className="about-tech-stack-section">
+          <h2 className="section-header-title">Tech Stack</h2>
+          <div className="tech-tags-grid-new">
+            {techStack.map((tech) => (
+              <span key={tech} className="tech-tag-new">
+                {tech}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
-
-      <div className="tech-section">
-        <h2 className="tech-section-title">Tech Stack</h2>
-
-        <div className="tech-stack">
-          {techStack.map((tech) => (
-            <span key={tech} className="tech-tag">
-              {tech}
-            </span>
-          ))}
-        </div>
-      </div>
-    </m.div>
+    </div>
   );
 };
 
