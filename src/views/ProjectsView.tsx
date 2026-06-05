@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./ProjectsView.css";
 import ProjectCard, { Project } from "../components/ProjectCard";
 
@@ -41,15 +41,115 @@ const projects: Project[] = [
   },
 ];
 
-
 const ProjectsView: React.FC = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [activeGlowColor, setActiveGlowColor] = useState("var(--color-accent-1)");
+
+  useEffect(() => {
+    document.body.classList.add("projects-page-active");
+    return () => {
+      document.body.classList.remove("projects-page-active");
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!containerRef.current) return;
+      const rect = containerRef.current.getBoundingClientRect();
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      
+      const viewportHeight = window.innerHeight;
+      const containerTop = rect.top + scrollTop;
+      const containerHeight = rect.height;
+
+      // Start tracking when container top is near viewport center
+      const startScroll = containerTop - viewportHeight * 0.6;
+      // End tracking when the container bottom has scrolled past viewport center
+      const endScroll = containerTop + containerHeight - viewportHeight * 0.4;
+      
+      const totalDist = endScroll - startScroll;
+      const currentScroll = scrollTop - startScroll;
+      
+      let progress = 0;
+      if (totalDist > 0) {
+        progress = Math.max(0, Math.min(1, currentScroll / totalDist));
+      }
+      setScrollProgress(progress);
+
+      // Determine glow color based on scroll sections
+      if (progress < 0.35) {
+        setActiveGlowColor("var(--color-accent-1)"); // Gold
+      } else if (progress < 0.7) {
+        setActiveGlowColor("var(--color-accent-2)"); // White
+      } else {
+        setActiveGlowColor("var(--color-accent-1)"); // Gold
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll);
+    handleScroll();
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
+  }, []);
+
   return (
-    <div className="projects-view">
-      <h1>Explore my Projects</h1>
-      <div className="projects-grid">
-        {projects.map((project, index) => (
-          <ProjectCard key={project.id} project={project} index={index} />
-        ))}
+    <div className="projects-container" ref={containerRef}>
+      {/* Central Divider Line */}
+      <div className="projects-divider-container">
+        <div className="projects-divider-base" />
+        <div
+          className="projects-divider-glow"
+          style={{
+            height: `${scrollProgress * 100}%`,
+            background: `linear-gradient(to bottom, var(--color-accent-1), var(--color-accent-2), var(--color-accent-1))`
+          }}
+        />
+        <div
+          className="projects-divider-orb"
+          style={{
+            top: `${scrollProgress * 100}%`,
+            backgroundColor: activeGlowColor,
+            boxShadow: `0 0 10px ${activeGlowColor}, 0 0 20px ${activeGlowColor}, 0 0 30px ${activeGlowColor}`
+          }}
+        />
+      </div>
+
+      <div className="projects-grid-layout">
+        {/* Row 1, Right: PROJECTS Header */}
+        <div className="projects-header-item">
+          <h1 className="projects-title">
+            <span className="title-pro">PRO</span>
+            <span className="title-jects">
+              JE<span className="title-cts-wrapper">CTS
+                <span className="title-triangles" style={{ color: activeGlowColor }}>
+                  <span className="tri">▲</span>
+                  <span className="tri">▲</span>
+                  <span className="tri">▲</span>
+                </span>
+              </span>
+            </span>
+          </h1>
+        </div>
+
+        {/* Row 1, Left: Project 1 */}
+        <div className="project-grid-item item-1">
+          <ProjectCard project={projects[0]} index={0} />
+        </div>
+
+        {/* Row 2, Right: Project 2 */}
+        <div className="project-grid-item item-2">
+          <ProjectCard project={projects[1]} index={1} />
+        </div>
+
+        {/* Row 3, Left: Project 3 */}
+        <div className="project-grid-item item-3">
+          <ProjectCard project={projects[2]} index={2} />
+        </div>
       </div>
     </div>
   );

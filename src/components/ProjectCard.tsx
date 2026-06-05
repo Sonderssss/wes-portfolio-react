@@ -1,6 +1,5 @@
-
+import React from "react";
 import { m } from "motion/react";
-import { Zap, Shield, LineChart, CheckCircle2 } from "lucide-react";
 
 export interface Project {
   id: number;
@@ -14,72 +13,40 @@ export interface Project {
   liveLink?: string;
 }
 
-const getTechIcon = (index: number) => {
-  const icons = [
-    <Zap key="zap" className="h-3 w-3" />,
-    <Shield key="shield" className="h-3 w-3" />,
-    <LineChart key="chart" className="h-3 w-3" />,
-    <CheckCircle2 key="check" className="h-3 w-3" />,
-  ];
-  return icons[index % icons.length];
-};
-
-const ProjectCard = ({
-  project,
-  index,
-}: {
+interface ProjectCardProps {
   project: Project;
   index: number;
-}) => {
+}
+
+const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
   return (
     <m.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      className={`project-card ${
-        project.size === "large" ? "card-large" : "card-small"
-      }`}
+      viewport={{ once: true, amount: 0.15 }}
+      transition={{ duration: 0.7, delay: index * 0.1, ease: [0.215, 0.61, 0.355, 1] }}
+      className="project-preview-card"
     >
-      <div className="card-image-wrapper">
+      <span className="project-preview-category">{project.category.toUpperCase()}</span>
+      <div className="project-preview-image-wrapper">
         <img
           src={project.image}
           alt={project.title}
-          className="card-image"
+          className="project-preview-image"
           referrerPolicy="no-referrer"
         />
-        <div className="card-image-gradient" />
-        
-        <div className="initial-title-overlay">
-          <h2>{project.title}</h2>
-        </div>
-        
-        <div className="card-top-tech">
-          {project.codebase.split(",").map((tech, i) => {
-            const trimmedTech = tech.trim();
-            return (
-              <span key={trimmedTech} className="tech-pill">
-                {getTechIcon(i)}
-                {trimmedTech}
-              </span>
-            );
-          })}
-        </div>
       </div>
-
-      <div className="card-bottom-content">
-        <h3 className="card-title-new">{project.title}</h3>
-        <p className="card-desc-new">{project.description}</p>
-        
-        <div className="card-actions-new">
-          <a href={project.liveLink || "#"} target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ textDecoration: 'none', textAlign: 'center' }}>
-            View Project
-          </a>
-          <a href={project.sourceCode || "#"} target="_blank" rel="noopener noreferrer" className="btn-secondary" style={{ textDecoration: 'none', textAlign: 'center' }}>
-            Source Code
-          </a>
-        </div>
-      </div>
+      <h3 className="project-preview-title">{project.title.toUpperCase()}</h3>
+      {project.sourceCode && (
+        <a
+          href={project.sourceCode}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="project-preview-link"
+        >
+          VIEW SOURCE CODE →
+        </a>
+      )}
     </m.div>
   );
 };

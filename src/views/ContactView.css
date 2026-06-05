@@ -97,12 +97,12 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
   display: flex;
   flex-direction: column;
-  color: #FF49C1;
+  color: var(--color-accent-1);
 }
 
 .contact-form-side .contact-heading {
   margin-bottom: 2rem;
-  color: #FF49C1;
+  color: var(--color-accent-1);
   text-align: left;
 }
 
@@ -121,9 +121,9 @@
 .modern-form textarea {
   background: transparent;
   border: none;
-  border-bottom: 1px solid rgba(183, 110, 121, 0.4);
+  border-bottom: 1px solid rgba(201, 175, 132, 0.2);
   padding: 0.75rem 0;
-  color: #FF49C1;
+  color: var(--color-accent-1);
   font-size: 0.95rem;
   transition: border-color 0.3s ease;
   font-family: inherit;
@@ -132,13 +132,13 @@
 
 .modern-form input::placeholder,
 .modern-form textarea::placeholder {
-  color: rgba(183, 110, 121, 0.6);
+  color: rgba(201, 175, 132, 0.4);
 }
 
 .modern-form input:focus,
 .modern-form textarea:focus {
   outline: none;
-  border-bottom-color: #FF49C1;
+  border-bottom-color: var(--color-accent-1);
 }
 
 .modern-form textarea {
@@ -149,8 +149,8 @@
 .send-btn {
   align-self: flex-start;
   margin-top: 1rem;
-  background-color: #FF49C1;
-  color: #FFFFFF;
+  background-color: var(--color-accent-1);
+  color: #0e0f11;
   border: none;
   padding: 1rem 2rem;
   font-size: 0.9rem;
@@ -167,8 +167,9 @@
 
 .send-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  background-color: #a05a66;
+  box-shadow: 0 5px 15px rgba(201, 175, 132, 0.3);
+  background-color: var(--color-accent-2);
+  color: var(--color-accent-1);
 }
 
 @media (max-width: 480px) {
@@ -214,8 +215,8 @@
 }
 
 .social-links a:hover {
-  color: #FF49C1;
+  color: var(--color-accent-1);
   background-color: #FFFFFF;
   transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 15px rgba(201, 175, 132, 0.2);
 }

@@ -8,6 +8,22 @@
     src: url('./assets/fonts/Cinzel-SemiBold.ttf') format('truetype');
 }
 
+:root {
+    --color-accent-1: #c9af84; /* Original Gold Accent */
+    --color-accent-2: #ffffff; /* White Accent */
+    --color-accent-1-rgb: 201, 175, 132;
+    --color-accent-2-rgb: 255, 255, 255;
+    --font-display: 'Magero', serif;
+    --font-body: 'behance', sans-serif;
+
+    --white: #ffffff;
+    --stone-200: #e7e5e4;
+    --stone-400: #a8a29e;
+    --stone-500: #78716c;
+    --stone-600: #57534e;
+    --stone-900: #1c1917;
+}
+
 html {
     scroll-behavior: smooth;
     scroll-snap-type: y mandatory;
@@ -38,14 +54,16 @@ body {
     max-width: 100%;
     width: 100%;
     background:
-        radial-gradient(ellipse at center, #6A1452 0%, transparent 70%) 0% 0% / 150% 150%,
-        radial-gradient(ellipse at center, #FF49C1 0%, transparent 70%) 100% 0% / 150% 150%,
-        radial-gradient(ellipse at center, #FFA7AD 0%, transparent 70%) 100% 100% / 150% 150%,
-        radial-gradient(ellipse at center, #FFB3AE 0%, transparent 70%) 0% 100% / 150% 150%,
-        #44113E;
+        radial-gradient(ellipse at center, rgba(201, 175, 132, 0.05) 0%, transparent 70%) 0% 0% / 150% 150%,
+        radial-gradient(ellipse at center, rgba(255, 255, 255, 0.04) 0%, transparent 70%) 100% 0% / 150% 150%,
+        radial-gradient(ellipse at center, rgba(201, 175, 132, 0.03) 0%, transparent 70%) 100% 100% / 150% 150%,
+        radial-gradient(ellipse at center, rgba(255, 255, 255, 0.03) 0%, transparent 70%) 0% 100% / 150% 150%,
+        #0e0f11;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    animation: meshMove 15s ease-in-out infinite alternate;
+    color: #ffffff;
+    font-family: var(--font-body);
+    animation: meshMove 20s ease-in-out infinite alternate;
 }
 
 @keyframes meshMove {
@@ -70,18 +88,8 @@ body {
     }
 }
 
-:root {
-    --white: #ffffff;
-
-    --stone-200: #e7e5e4;
-    --stone-400: #a8a29e;
-    --stone-500: #78716c;
-    --stone-600: #57534e;
-    --stone-900: #1c1917;
-}
-
 #app {
-    font-family: 'behance';
+    font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
@@ -98,7 +106,7 @@ nav {
     background-color: transparent;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     box-sizing: border-box;
 }
 
@@ -110,10 +118,15 @@ nav a {
     position: relative;
     display: inline-block;
     padding-bottom: 8px;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--color-accent-1);
 }
 
 nav a.router-link-exact-active {
-    color: #FFFFFF;
+    color: var(--color-accent-1);
 }
 
 @keyframes slideInLeft {
@@ -147,7 +160,7 @@ nav a.router-link-exact-active::before {
     left: 0;
     height: 2px;
     width: 60%;
-    background: linear-gradient(to right, #FFFFFF, transparent);
+    background: linear-gradient(to right, var(--color-accent-1), transparent);
     animation: slideInLeft 0.5s ease-out forwards;
     border-radius: 2px;
 }
@@ -159,7 +172,7 @@ nav a.router-link-exact-active::after {
     right: 0;
     height: 2px;
     width: 60%;
-    background: linear-gradient(to left, #FFFFFF, transparent);
+    background: linear-gradient(to left, var(--color-accent-2), transparent);
     animation: slideInRight 0.5s ease-out forwards;
     border-radius: 2px;
 }
@@ -190,7 +203,7 @@ nav a.router-link-exact-active::after {
     display: inline-flex;
     align-items: center;
     gap: 12px;
-    font-family: 'Magero', serif;
+    font-family: var(--font-display);
     font-weight: bold;
     letter-spacing: 0.1em;
     transition: all 0.3s ease;
@@ -202,7 +215,8 @@ nav a.router-link-exact-active::after {
 
 .logo-triangle {
     font-size: 0.85rem;
-    color: #FFFFFF;
+    color: var(--color-accent-1);
+    text-shadow: 0 0 8px var(--color-accent-1);
 }
 
 .logo-text {
