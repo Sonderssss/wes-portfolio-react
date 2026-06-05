@@ -27,13 +27,14 @@
 
 .projects-title {
   font-family: var(--font-display);
-  font-size: 5rem;
+  font-size: 8rem;
   font-weight: 800;
   letter-spacing: -0.01em;
   margin: 0;
   line-height: 1.0;
   text-transform: uppercase;
   user-select: none;
+  white-space: nowrap;
 }
 
 .title-pro {
@@ -53,13 +54,13 @@
 
 .title-triangles {
   position: absolute;
-  bottom: -22px;
+  bottom: -36px;
   left: 0;
   right: 0;
   display: flex;
   justify-content: space-between;
   padding: 0 6px;
-  font-size: 0.85rem;
+  font-size: 1.35rem;
   line-height: 1;
   transition: color 0.4s ease;
 }
@@ -80,14 +81,16 @@
   grid-column: 2;
   grid-row: 2;
   align-self: start;
-  margin-top: -40px; /* Offset Project 2 below Project 1 */
+  margin-top: -40px;
+  /* Offset Project 2 below Project 1 */
 }
 
 .item-3 {
   grid-column: 1;
   grid-row: 3;
   align-self: start;
-  margin-top: -60px; /* Offset Project 3 below Project 2 */
+  margin-top: -60px;
+  /* Offset Project 3 below Project 2 */
 }
 
 /* Center Glowing Divider Line */
@@ -204,9 +207,14 @@
 /* Responsive Media Queries */
 @media (max-width: 992px) {
   .projects-title {
-    font-size: 4rem;
+    font-size: 6rem;
   }
-  
+
+  .title-triangles {
+    bottom: -27px;
+    font-size: 1rem;
+  }
+
   .projects-container .project-preview-image-wrapper {
     height: 280px;
   }
@@ -219,7 +227,8 @@
 @media (max-width: 768px) {
   .projects-container {
     margin-top: 100px;
-    padding-left: 20px; /* Space for left-aligned progress bar */
+    padding-left: 20px;
+    /* Space for left-aligned progress bar */
   }
 
   /* Single Column Layout on Mobile */
@@ -237,7 +246,12 @@
   }
 
   .projects-title {
-    font-size: 3rem;
+    font-size: 4.5rem;
+  }
+
+  .title-triangles {
+    bottom: -20px;
+    font-size: 0.75rem;
   }
 
   .item-1 {
@@ -273,4 +287,15 @@
 body.projects-page-active {
   background: #0e0f11 !important;
   animation: none !important;
+}
+
+@media (max-width: 480px) {
+  .projects-title {
+    font-size: 3.2rem;
+  }
+
+  .title-triangles {
+    bottom: -15px;
+    font-size: 0.55rem;
+  }
 }
