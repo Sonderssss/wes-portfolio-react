@@ -1,0 +1,310 @@
+/* ==========================================================================
+   Footer Component Styles (Centered Backdrop, Right-Aligned Links, Dark Theme)
+   ========================================================================== */
+
+.footer-section {
+  background-color: #0e0f11; /* Solid dark background matching homepage */
+  color: #ffffff;            /* White text for contrast */
+  width: 100%;
+  position: relative;
+  overflow: hidden;          /* Clips the oversized backdrop text and logo overflow at the bottom */
+  box-sizing: border-box;
+  padding-top: 10rem;        /* Spacious whitespace above footer content */
+  padding-bottom: 0;         /* Rely on content area height and absolute overflow */
+  scroll-snap-align: end;    /* Integrates smoothly with scroll snap systems */
+}
+
+/* 1. Thin Horizontal Divider Line */
+.footer-divider-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 4rem;
+}
+
+.footer-divider-line {
+  width: 90%;
+  max-width: 1200px;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.1); /* Soft, low-contrast divider line on dark background */
+}
+
+/* Main Content Area Container */
+.footer-content-container {
+  max-width: 1200px;         /* Aligns with the maximum container width of the site's content pages */
+  width: 90%;
+  margin: 0 auto;
+  position: relative;
+  min-height: 28rem;         /* Premium, spacious height */
+  display: flex;
+  justify-content: space-between; /* Links push to the right, left space remains open */
+  align-items: flex-end;
+  box-sizing: border-box;
+}
+
+/* 2. Typography Backdrop Area & Text - Centered Horizontally on Desktop */
+.footer-backdrop-outer-wrapper {
+  position: absolute;
+  bottom: -6.5vw;            /* Position near the bottom, overflowing the visible area */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;                /* Positioned behind interactive social links */
+  width: auto;
+  pointer-events: none;      /* Disables mouse interactions */
+}
+
+.footer-backdrop-area {
+  width: auto;
+  pointer-events: none;      /* Disables mouse interactions */
+}
+
+.footer-backdrop-text-wrapper {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.footer-backdrop-text {
+  font-family: var(--font-display), 'Cinzel', serif;
+  font-size: 21vw;           /* Extremely large, responsive scaling backdrop */
+  font-weight: 900;
+  line-height: 0.75;
+  color: #16171b;            /* Dark low contrast gray against #0e0f11 */
+  letter-spacing: -0.02em;
+  display: block;
+}
+
+/* 3. Decorative Image (3D Logo Lab) Positioning & Styling - Enlarged */
+.footer-decorative-image-wrapper {
+  position: absolute;
+  /* 
+    Overlaying the "LIVE" backdrop text, centered exactly on the letter 'I'.
+    Percentage-based left position aligns it with the center of 'I' across all viewport sizes.
+  */
+  left: 14%;                 /* Center of 'I' is approx 33%, width is 38%, so left = 33% - 19% = 14% */
+  top: -5%;                  /* Centered vertically on the letter 'I' */
+  width: 38%;                /* Scaled size */
+  max-width: 420px;          /* Increased max-width constraint */
+  min-width: 140px;          /* Increased min-width constraint */
+  z-index: 2;                /* Layered above backdrop text but below links */
+  display: block;
+  pointer-events: none;      /* Ensures mouse passes through decorative logo */
+}
+
+.footer-decorative-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  opacity: 0.8;              /* Blends nicely with the dark background */
+  filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.3));
+}
+
+/* 4. Social Links Area - Right-Aligned (Matching Design Reference) */
+.footer-social-links-area {
+  position: absolute;
+  right: 0;                  /* Placed near the right end, overlapping 'E' */
+  bottom: 8.5vw;             /* Anchored above the bottom overflow line (6.5vw) to prevent clipping */
+  z-index: 10;               /* Positioned above backdrop elements for interactivity */
+  pointer-events: auto;      /* Restores interactivity so links are clickable */
+}
+
+.footer-social-links-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: flex-start;   /* Left-align link items inside the stack (as in reference image) */
+}
+
+.footer-social-link-item-wrapper {
+  display: block;
+}
+
+.footer-social-link-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.5); /* Silver-gray default color */
+  font-size: 1.15rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  padding: 0.25rem 0;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+/* Override global span styles to inherit anchor styling and colors */
+.footer-social-link-item span {
+  color: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+  letter-spacing: inherit;
+}
+
+/* Focus outline for keyboard navigation */
+.footer-social-link-item:focus-visible {
+  outline: 2px solid var(--color-accent-1, #c9af84);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+.footer-social-icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.footer-social-label-box {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-social-label-text {
+  transition: color 0.3s ease;
+}
+
+/* Underline decoration that animates from left to right on hover */
+.footer-social-label-underline {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1.5px;
+  background-color: var(--color-accent-1, #c9af84); /* Gold underline matching homepage */
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Hover Interactions */
+.footer-social-link-item:hover {
+  color: var(--color-accent-1, #c9af84); /* Gold hover text matching homepage */
+}
+
+.footer-social-link-item:hover .footer-social-icon-box {
+  transform: translateX(5px); /* Icon slides slightly to the right */
+}
+
+.footer-social-link-item:hover .footer-social-label-underline {
+  transform: scaleX(1);      /* Underline animates left-to-right */
+}
+
+
+/* ==========================================================================
+   Responsive Media Queries
+   ========================================================================== */
+
+/* Tablet Layout (max-width: 1024px) */
+@media (max-width: 1024px) {
+  .footer-section {
+    padding-top: 8rem;
+  }
+  
+  .footer-content-container {
+    min-height: 22rem;
+  }
+
+  .footer-backdrop-text {
+    font-size: 22vw;         /* Scale text to match screen boundaries */
+  }
+
+  .footer-backdrop-outer-wrapper {
+    bottom: -5.5vw;
+  }
+
+  .footer-social-links-area {
+    bottom: 8.5vw;
+  }
+}
+
+/* Mobile Layout (max-width: 767px) */
+@media (max-width: 767px) {
+  .footer-section {
+    padding-top: 6rem;
+  }
+
+  .footer-divider-container {
+    margin-bottom: 2.5rem;
+  }
+
+  .footer-divider-line {
+    width: 80%;              /* Divider spans slightly wider on mobile for visual balance */
+  }
+
+  .footer-content-container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: auto;
+    padding-bottom: 10rem;   /* Padding at the bottom leaves room for the backdrop text */
+    gap: 3rem;
+  }
+
+  /* 
+    Reposition backdrop area to allow the decorative logo to float at the top,
+    above the social links, without breaking reading flow.
+  */
+  .footer-backdrop-outer-wrapper {
+    position: static;
+    transform: none;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-backdrop-text-wrapper {
+    position: relative;        /* Relative for absolute layout inside it */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    min-height: 22rem;
+  }
+
+  /* Decorative logo floats centered above the social links */
+  .footer-decorative-image-wrapper {
+    position: absolute;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 110px;             /* Enlarge a bit on mobile too */
+    max-width: 130px;
+    min-width: auto;
+    z-index: 2;
+  }
+
+  /* Backdrop text "LIVE" scales down at the bottom of the section */
+  .footer-backdrop-text {
+    position: absolute;
+    bottom: -3.5vw;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 26vw;         /* Scale appropriately to fit mobile viewports */
+    color: #1a1c21;          /* Low contrast gray for dark mode backdrop */
+    text-align: center;
+  }
+
+  /* Social links are centered horizontally */
+  .footer-social-links-area {
+    position: absolute;
+    top: 9.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    right: auto;
+    bottom: auto;
+    z-index: 10;
+  }
+
+  .footer-social-links-stack {
+    align-items: center;     /* Center links text and icons */
+  }
+  
+  .footer-social-link-item {
+    font-size: 1.25rem;      /* Keep font readable on tap targets */
+  }
+}

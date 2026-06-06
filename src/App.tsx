@@ -6,6 +6,7 @@ import Projects from "./pages/Projects";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer/Footer";
 import "./App.css";
 
 const App: React.FC = () => {
@@ -21,6 +22,7 @@ const App: React.FC = () => {
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>
+        <Footer />
       </MotionConfig>
     </LazyMotion>
   );
