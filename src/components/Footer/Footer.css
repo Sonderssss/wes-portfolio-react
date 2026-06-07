@@ -297,23 +297,23 @@
 
   .footer-backdrop-text-wrapper {
     position: relative;
-    /* Relative for absolute layout inside it */
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
-    min-height: 22rem;
+    min-height: auto;
+    gap: 2.5rem;               /* Natural vertical spacing between elements */
+    padding-bottom: 6rem;      /* Leaves room for backdrop text at the bottom */
   }
 
   /* Decorative logo floats centered above the social links */
   .footer-decorative-image-wrapper {
-    position: absolute;
-    top: 1rem;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 110px;
-    /* Enlarge a bit on mobile too */
-    max-width: 130px;
+    position: relative;        /* Stacked naturally in flex flow */
+    top: auto;
+    left: auto;
+    transform: none;
+    width: 150px;              /* Increased size a bit */
+    max-width: 180px;
     min-width: auto;
     z-index: 2;
   }
@@ -333,10 +333,10 @@
 
   /* Social links are centered horizontally */
   .footer-social-links-area {
-    position: absolute;
-    top: 9.5rem;
-    left: 50%;
-    transform: translateX(-50%);
+    position: relative;        /* Stacked naturally in flex flow */
+    top: auto;
+    left: auto;
+    transform: none;
     right: auto;
     bottom: auto;
     z-index: 10;
