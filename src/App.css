@@ -397,32 +397,4 @@ span {
     .other-links {
         gap: 15px;
     }
-}
-
-/* Utilities for Bottom Background Grid */
-.min-h-screen {
-    min-height: 100vh;
-}
-
-.w-full {
-    width: 100%;
-}
-
-.bg-white {
-    background-color: #ffffff;
-}
-
-.relative {
-    position: relative;
-}
-
-.absolute {
-    position: absolute;
-}
-
-.inset-0 {
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-}
+}

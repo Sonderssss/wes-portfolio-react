@@ -185,4 +185,10 @@
     padding: 1rem;
   }
 }
+
+/* Contact Page Background Override */
+body.contact-page-active {
+  background: #0e0f11 !important;
+  animation: none !important;
+}
 

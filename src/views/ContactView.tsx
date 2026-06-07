@@ -54,6 +54,13 @@ const ContactView: React.FC = () => {
   const [state, dispatch] = useReducer(contactReducer, initialState);
   const { name, phone, email, message, loading, success, error } = state;
 
+  React.useEffect(() => {
+    document.body.classList.add("contact-page-active");
+    return () => {
+      document.body.classList.remove("contact-page-active");
+    };
+  }, []);
+
   const submitForm = async (e: React.FormEvent) => {
     e.preventDefault();
     
