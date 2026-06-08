@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef, useSyncExternalStore, useCallback } from "react";
 import "./ProjectsView.css";
 import ProjectCard, { Project } from "../components/ProjectCard";
 
@@ -43,8 +43,6 @@ const projects: Project[] = [
 
 const ProjectsView: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const [activeGlowColor, setActiveGlowColor] = useState("var(--color-accent-1)");
 
   useEffect(() => {
     document.body.classList.add("projects-page-active");
@@ -52,50 +50,44 @@ const ProjectsView: React.FC = () => {
       document.body.classList.remove("projects-page-active");
     };
   }, []);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!containerRef.current) return;
-      const rect = containerRef.current.getBoundingClientRect();
-      const scrollTop = window.scrollY || document.documentElement.scrollTop;
-      
-      const viewportHeight = window.innerHeight;
-      const containerTop = rect.top + scrollTop;
-      const containerHeight = rect.height;
-
-      // Start tracking when container top is near viewport center
-      const startScroll = containerTop - viewportHeight * 0.6;
-      // End tracking when the container bottom has scrolled past viewport center
-      const endScroll = containerTop + containerHeight - viewportHeight * 0.4;
-      
-      const totalDist = endScroll - startScroll;
-      const currentScroll = scrollTop - startScroll;
-      
-      let progress = 0;
-      if (totalDist > 0) {
-        progress = Math.max(0, Math.min(1, currentScroll / totalDist));
-      }
-      setScrollProgress(progress);
-
-      // Determine glow color based on scroll sections
-      if (progress < 0.35) {
-        setActiveGlowColor("var(--color-accent-1)"); // Gold
-      } else if (progress < 0.7) {
-        setActiveGlowColor("var(--color-accent-2)"); // White
-      } else {
-        setActiveGlowColor("var(--color-accent-1)"); // Gold
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    window.addEventListener("resize", handleScroll);
-    handleScroll();
-
+  const subscribe = useCallback((onStoreChange: () => void) => {
+    window.addEventListener("scroll", onStoreChange, { passive: true });
+    window.addEventListener("resize", onStoreChange);
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleScroll);
+      window.removeEventListener("scroll", onStoreChange);
+      window.removeEventListener("resize", onStoreChange);
     };
   }, []);
+
+  const getSnapshot = useCallback(() => {
+    if (!containerRef.current) return 0;
+    const rect = containerRef.current.getBoundingClientRect();
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    
+    const viewportHeight = window.innerHeight;
+    const containerTop = rect.top + scrollTop;
+    const containerHeight = rect.height;
+
+    // Start tracking when container top is near viewport center
+    const startScroll = containerTop - viewportHeight * 0.6;
+    // End tracking when the container bottom has scrolled past viewport center
+    const endScroll = containerTop + containerHeight - viewportHeight * 0.4;
+    
+    const totalDist = endScroll - startScroll;
+    const currentScroll = scrollTop - startScroll;
+    
+    if (totalDist <= 0) return 0;
+    return Math.max(0, Math.min(1, currentScroll / totalDist));
+  }, []);
+
+  const scrollProgress = useSyncExternalStore(subscribe, getSnapshot, () => 0);
+
+  const activeGlowColor =
+    scrollProgress < 0.35
+      ? "var(--color-accent-1)"
+      : scrollProgress < 0.7
+      ? "var(--color-accent-2)"
+      : "var(--color-accent-1)";
 
   return (
     <div className="projects-container" ref={containerRef}>

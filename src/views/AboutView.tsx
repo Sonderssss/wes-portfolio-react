@@ -17,21 +17,62 @@ const techStack = [
 
 const qualities = [
   {
+    id: "backend-engineer",
     icon: <Cpu className="h-5 w-5" />,
     title: "Backend Engineer",
     desc: "Building robust and scalable server-side architectures.",
   },
   {
+    id: "fullstack-developer",
     icon: <Globe className="h-5 w-5" />,
     title: "Fullstack Developer",
     desc: "Crafting seamless end-to-end digital experiences.",
   },
   {
+    id: "systems-architect",
     icon: <Code2 className="h-5 w-5" />,
     title: "Systems Design Architect",
     desc: "Designing complex systems with internal harmony.",
   },
 ];
+
+const textContainerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const textItemVariants: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, ease: [0.215, 0.61, 0.355, 1] as const },
+  },
+};
+
+const introVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, delay: 0.6, ease: "easeOut" as const },
+  },
+};
+
+const dividerVariants: Variants = {
+  hidden: { scale: 0, opacity: 0 },
+  visible: {
+    scale: 1,
+    opacity: 1,
+    transition: { duration: 1.2, ease: "easeInOut" as const },
+  },
+};
 
 const AboutView: React.FC = () => {
   React.useEffect(() => {
@@ -40,44 +81,6 @@ const AboutView: React.FC = () => {
       document.body.classList.remove("about-page-active");
     };
   }, []);
-
-  const textContainerVariants: Variants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.1,
-      },
-    },
-  };
-
-  const textItemVariants: Variants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.8, ease: [0.215, 0.61, 0.355, 1] as const },
-    },
-  };
-
-  const introVariants: Variants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.8, delay: 0.6, ease: "easeOut" as const },
-    },
-  };
-
-  const dividerVariants: Variants = {
-    hidden: { scale: 0, opacity: 0 },
-    visible: {
-      scale: 1,
-      opacity: 1,
-      transition: { duration: 1.2, ease: "easeInOut" as const },
-    },
-  };
 
   return (
     <div className="about-container">
@@ -136,8 +139,8 @@ const AboutView: React.FC = () => {
         <div className="about-expertise-container">
           <h2 className="section-header-title">Core Expertise</h2>
           <div className="expertise-grid-new">
-            {qualities.map((q, idx) => (
-              <div key={idx} className="expertise-item">
+            {qualities.map((q) => (
+              <div key={q.id} className="expertise-item">
                 <div className="expertise-icon">{q.icon}</div>
                 <h3 className="expertise-title">{q.title}</h3>
                 <p className="expertise-desc">{q.desc}</p>
