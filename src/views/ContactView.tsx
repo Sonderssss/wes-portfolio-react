@@ -35,7 +35,7 @@ const initialState: ContactState = {
 function contactReducer(state: ContactState, action: ContactAction): ContactState {
   switch (action.type) {
     case "SET_FIELD":
-      return { ...state, [action.field]: action.value };
+      return { ...state, [action.field]: action.value, success: "", error: "" };
     case "SUBMIT_START":
       return { ...state, loading: true, success: "", error: "" };
     case "SUBMIT_SUCCESS":
@@ -63,6 +63,7 @@ const ContactView: React.FC = () => {
 
   const submitForm = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (loading || success) return;
     
     dispatch({ type: "SUBMIT_START" });
 
@@ -187,8 +188,8 @@ const ContactView: React.FC = () => {
               ></textarea>
             </div>
 
-            <button type="submit" className="send-btn" disabled={loading}>
-              {loading ? "Sending..." : "SEND MESSAGE"}
+            <button type="submit" className="send-btn" disabled={loading || !!success}>
+              {loading ? "Sending..." : success ? "MESSAGE SENT" : "SEND MESSAGE"}
             </button>
             {success && <p className="success-message">{success}</p>}
 

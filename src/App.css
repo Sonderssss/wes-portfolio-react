@@ -397,4 +397,15 @@ span {
     .other-links {
         gap: 15px;
     }
+}
+
+/* Disable scroll snapping on tablets and mobile devices to fix input focusing and jumpy scrolling */
+@media (max-width: 1024px) {
+    html {
+        scroll-snap-type: none !important;
+    }
+    .page-section {
+        scroll-snap-align: none !important;
+        scroll-snap-stop: normal !important;
+    }
 }
