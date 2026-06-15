@@ -7,12 +7,14 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer/Footer";
+import ScrollToTop from "./components/ScrollToTop";
 import "./App.css";
 
 const App: React.FC = () => {
   return (
     <LazyMotion features={domAnimation} strict>
       <MotionConfig reducedMotion="user">
+        <ScrollToTop />
         <Navbar />
         <main>
           <Routes>
