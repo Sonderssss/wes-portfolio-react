@@ -8,6 +8,7 @@ import Contact from "./pages/Contact";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer/Footer";
 import ScrollToTop from "./components/ScrollToTop";
+import CustomCursor from "./components/CustomCursor/CustomCursor";
 import "./App.css";
 
 const App: React.FC = () => {
@@ -15,6 +16,7 @@ const App: React.FC = () => {
     <LazyMotion features={domAnimation} strict>
       <MotionConfig reducedMotion="user">
         <ScrollToTop />
+        <CustomCursor />
         <Navbar />
         <main>
           <Routes>
