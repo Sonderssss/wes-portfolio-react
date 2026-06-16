@@ -22,7 +22,7 @@ const HomeView: React.FC = () => {
       {/* Hero Section */}
       <div className="hero-section">
         <div className="hero-text-left">
-          <span className="hero-subtitle">MCREATIVITY MBAYA</span>
+          <span className="hero-subtitle">ME BUT ON YOUR BROWSER</span>
           <h1 className="hero-title">
             <span className="hero-title-box">WESLEY</span>
             <span className="hero-title-main">TO THE LOUVRE</span>
