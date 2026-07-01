@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useSyncExternalStore, useCallback } from "react";
 import "./ProjectsView.css";
 import ProjectCard, { Project } from "../components/ProjectCard";
+import tabGroupBookmarkerImg from "../assets/images/tab-group-bookmarker.png";
 
 const projects: Project[] = [
   {
@@ -43,7 +44,7 @@ const projects: Project[] = [
     id: 4,
     title: "Group Tab Bookmarker",
     category: "Chrome Extension",
-    image: "../src/assets/images/tab-group-bookmarker.png",
+    image: tabGroupBookmarkerImg,
     size: "small",
     description:
       "An Easier way to manage your grouped tabs and save them as a folder in your Bookmarks.",
