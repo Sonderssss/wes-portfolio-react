@@ -39,6 +39,18 @@ const projects: Project[] = [
     sourceCode: "https://github.com/Sonderssss/subscription-tracker",
     liveLink: "#",
   },
+  {
+    id: 4,
+    title: "Group Tab Bookmarker",
+    category: "Chrome Extension",
+    image: "../src/assets/images/tab-group-bookmarker.png",
+    size: "small",
+    description:
+      "An Easier way to manage your grouped tabs and save them as a folder in your Bookmarks.",
+    codebase: "HTML, CSS, JavaScript",
+    sourceCode: "https://github.com/Sonderssss/tab-group-bookmarker",
+    liveLink: "#",
+  },
 ];
 
 const ProjectsView: React.FC = () => {
@@ -141,6 +153,11 @@ const ProjectsView: React.FC = () => {
         {/* Row 3, Left: Project 3 */}
         <div className="project-grid-item item-3">
           <ProjectCard project={projects[2]} index={2} />
+        </div>
+
+        {/* Row 4, Right: Project 4 */}
+        <div className="project-grid-item item-4">
+          <ProjectCard project={projects[3]} index={3} />
         </div>
       </div>
     </div>
