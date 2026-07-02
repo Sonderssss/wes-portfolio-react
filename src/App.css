@@ -9,8 +9,10 @@
 }
 
 :root {
-    --color-accent-1: #c9af84; /* Original Gold Accent */
-    --color-accent-2: #ffffff; /* White Accent */
+    --color-accent-1: #c9af84;
+    /* Original Gold Accent */
+    --color-accent-2: #ffffff;
+    /* White Accent */
     --color-accent-1-rgb: 201, 175, 132;
     --color-accent-2-rgb: 255, 255, 255;
     --font-display: 'Magero', serif;
@@ -22,6 +24,11 @@
     --stone-500: #78716c;
     --stone-600: #57534e;
     --stone-900: #1c1917;
+}
+
+::selection {
+    background-color: #c9af84;
+    color: black;
 }
 
 html {
@@ -404,8 +411,9 @@ span {
     html {
         scroll-snap-type: none !important;
     }
+
     .page-section {
         scroll-snap-align: none !important;
         scroll-snap-stop: normal !important;
     }
-}
+}
