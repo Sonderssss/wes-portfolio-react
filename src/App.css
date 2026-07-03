@@ -235,6 +235,7 @@ nav a.router-link-exact-active::after {
     font-size: 1.1rem;
     color: #FFFFFF;
     font-weight: bold;
+    font-family: 'Southera', serif;
 }
 
 .nav-links-center {

@@ -29,7 +29,7 @@ const Navbar: React.FC = () => {
   return (
     <nav>
       <div className="nav-header">
-        <span>WES</span>
+        <span className="nav-header-text">WES</span>
         <button
           type="button"
           className="hamburger-menu"
