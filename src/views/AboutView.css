@@ -102,6 +102,7 @@
   letter-spacing: -0.04em;
   text-transform: uppercase;
   transform: translateY(1.8rem);
+  font-family: 'Southera', serif;
 }
 
 .word-me {
@@ -223,10 +224,22 @@
     font-size: 2.2rem;
   }
 
-  .word-get { font-size: 7rem; }
-  .word-know { font-size: 4rem; }
-  .word-to { font-size: 8.5rem; transform: translateY(1.2rem); }
-  .word-me { font-size: 6.5rem; }
+  .word-get {
+    font-size: 7rem;
+  }
+
+  .word-know {
+    font-size: 4rem;
+  }
+
+  .word-to {
+    font-size: 8.5rem;
+    transform: translateY(1.2rem);
+  }
+
+  .word-me {
+    font-size: 6.5rem;
+  }
 
   .expertise-grid-new {
     gap: 2rem;
@@ -247,7 +260,8 @@
 
   /* In mobile: Typography stacks FIRST, followed by introduction stacked below */
   .about-typography-side {
-    grid-row: 1; /* Force GET TO KNOW ME to the top on mobile */
+    grid-row: 1;
+    /* Force GET TO KNOW ME to the top on mobile */
     align-items: center;
     text-align: center;
   }
@@ -274,10 +288,22 @@
     margin: 0 auto;
   }
 
-  .word-get { font-size: 6rem; }
-  .word-know { font-size: 3.5rem; }
-  .word-to { font-size: 7.5rem; transform: translateY(1rem); }
-  .word-me { font-size: 5.5rem; }
+  .word-get {
+    font-size: 6rem;
+  }
+
+  .word-know {
+    font-size: 3.5rem;
+  }
+
+  .word-to {
+    font-size: 7.5rem;
+    transform: translateY(1rem);
+  }
+
+  .word-me {
+    font-size: 5.5rem;
+  }
 
   .expertise-grid-new {
     grid-template-columns: 1fr;
@@ -290,10 +316,22 @@
 }
 
 @media (max-width: 480px) {
-  .word-get { font-size: 4.8rem; }
-  .word-know { font-size: 2.8rem; }
-  .word-to { font-size: 6.2rem; transform: translateY(0.8rem); }
-  .word-me { font-size: 4.4rem; }
+  .word-get {
+    font-size: 4.8rem;
+  }
+
+  .word-know {
+    font-size: 2.8rem;
+  }
+
+  .word-to {
+    font-size: 6.2rem;
+    transform: translateY(0.8rem);
+  }
+
+  .word-me {
+    font-size: 4.4rem;
+  }
 
   .about-intro-title {
     font-size: 1.8rem;
