@@ -37,7 +37,6 @@
     flex-direction: column;
     gap: 15px;
     margin: 0 0 45px 0;
-    font-family: 'Magero', serif;
     color: #FFFFFF;
 }
 
@@ -84,6 +83,36 @@
     height: auto;
     object-fit: contain;
     opacity: 0.95;
+}
+
+.hero-text-right-gastonia {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    user-select: none;
+}
+
+.hero-text-right-gastonia span {
+    font-family: 'Southera', serif;
+    font-size: 6.8rem;
+    color: var(--color-accent-1);
+    line-height: 1.1;
+    letter-spacing: 0.02em;
+    display: block;
+    white-space: nowrap;
+}
+
+@media (max-width: 992px) {
+    .hero-text-right-gastonia span {
+        font-size: 4rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-text-right-gastonia span {
+        font-size: 3.2rem;
+    }
 }
 
 /* Projects Preview Row */
@@ -136,7 +165,6 @@
 }
 
 .home-view-container .project-preview-title {
-    font-family: 'Magero', serif;
     font-size: 1.3rem;
     font-weight: normal;
     color: #FFFFFF;

@@ -1,7 +1,8 @@
 import React from 'react'
 import { m } from 'motion/react'
 import { Link } from 'react-router-dom'
-import PortfolioImg from '../assets/images/Portfolio.png'
+
+
 import './HomeView.css'
 
 const HomeView: React.FC = () => {
@@ -33,7 +34,10 @@ const HomeView: React.FC = () => {
         </div>
         
         <div className="hero-image-right">
-          <img src={PortfolioImg} alt="Portfolio logo" />
+          <div className="hero-text-right-gastonia">
+            <span>Port -</span>
+            <span>Folio</span>
+          </div>
         </div>
       </div>
 

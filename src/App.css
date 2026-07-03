@@ -1,11 +1,16 @@
 @font-face {
-    font-family: behance;
-    src: url('./assets/fonts/behance.ttf') format('truetype');
+    font-family: Magero;
+    src: url('./assets/fonts/Cinzel-SemiBold.ttf') format('truetype');
 }
 
 @font-face {
-    font-family: Magero;
-    src: url('./assets/fonts/Cinzel-SemiBold.ttf') format('truetype');
+    font-family: Gasetta;
+    src: url('./assets/fonts/Gasetta.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: Southera;
+    src: url('./assets/fonts/Southera.ttf') format('truetype');
 }
 
 :root {
@@ -15,8 +20,8 @@
     /* White Accent */
     --color-accent-1-rgb: 201, 175, 132;
     --color-accent-2-rgb: 255, 255, 255;
-    --font-display: 'Magero', serif;
-    --font-body: 'behance', sans-serif;
+    --font-display: 'Gasetta', serif;
+    --font-body: 'Gasetta', serif;
 
     --white: #ffffff;
     --stone-200: #e7e5e4;
