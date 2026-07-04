@@ -11,9 +11,9 @@
 /* Hero Section */
 .hero-section {
     display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
+    grid-template-columns: 0.95fr 1.05fr;
     align-items: center;
-    gap: 60px;
+    gap: 40px;
 }
 
 .hero-text-left {
@@ -91,27 +91,27 @@
     align-items: center;
     text-align: center;
     user-select: none;
+    width: 100%;
 }
 
-.hero-text-right-gastonia span {
-    font-family: 'Southera', serif;
-    font-size: 6.8rem;
-    color: var(--color-accent-1);
-    line-height: 1.1;
-    letter-spacing: 0.02em;
+.hero-text-right-gastonia svg {
+    max-width: 100%;
+    max-height: 620px;
+    width: 100%;
+    height: auto;
     display: block;
-    white-space: nowrap;
+    margin: 0 auto;
 }
 
 @media (max-width: 992px) {
-    .hero-text-right-gastonia span {
-        font-size: 4rem;
+    .hero-text-right-gastonia svg {
+        max-height: 350px;
     }
 }
 
 @media (max-width: 768px) {
-    .hero-text-right-gastonia span {
-        font-size: 3.2rem;
+    .hero-text-right-gastonia svg {
+        max-height: 260px;
     }
 }
 

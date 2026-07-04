@@ -1,6 +1,7 @@
 import React from 'react'
 import { m } from 'motion/react'
 import { Link } from 'react-router-dom'
+import { HandwritingReveal } from '../components/HandwritingReveal'
 
 
 import './HomeView.css'
@@ -35,8 +36,11 @@ const HomeView: React.FC = () => {
         
         <div className="hero-image-right">
           <div className="hero-text-right-gastonia">
-            <span>Port -</span>
-            <span>Folio</span>
+            <HandwritingReveal
+            strokeDurationMs={450}
+            staggerMs={280}
+          />
+
           </div>
         </div>
       </div>

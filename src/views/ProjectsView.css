@@ -40,16 +40,19 @@
 .title-pro {
   color: var(--color-accent-1);
   text-shadow: 0 0 20px rgba(201, 175, 132, 0.25);
+  font-family: 'Southera', serif;
 }
 
 .title-jects {
   color: var(--color-accent-2);
   text-shadow: 0 0 20px rgba(255, 255, 255, 0.25);
+  font-family: 'Southera', serif;
 }
 
 .title-cts-wrapper {
   position: relative;
   display: inline-block;
+  font-family: 'Southera', serif;
 }
 
 .title-triangles {
