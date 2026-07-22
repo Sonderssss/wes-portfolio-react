@@ -37,6 +37,18 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
         />
       </div>
       <h3 className="project-preview-title">{project.title.toUpperCase()}</h3>
+      {project.description && (
+        <p className="project-preview-description">{project.description}</p>
+      )}
+      {project.codebase && (
+        <div className="project-preview-tech-pills">
+          {project.codebase.split(",").map((tech, i) => (
+            <span key={i} className="project-preview-tech-pill">
+              {tech.trim()}
+            </span>
+          ))}
+        </div>
+      )}
       {project.sourceCode && (
         <a
           href={project.sourceCode}

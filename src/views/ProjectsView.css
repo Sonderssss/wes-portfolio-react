@@ -17,10 +17,8 @@
 }
 
 /* Header Section */
-.projects-header-item {
+.projects-header-item-new {
   grid-column: 2;
-  grid-row: 1;
-  align-self: center;
   text-align: left;
   padding-left: 20px;
 }
@@ -71,6 +69,111 @@
 .tri {
   display: inline-block;
   transform: scaleY(0.8);
+}
+
+/* Top and Main Sections */
+.projects-top-section {
+  width: 100%;
+  margin-bottom: 80px;
+}
+
+.projects-main-section {
+  position: relative;
+  width: 100%;
+}
+
+.projects-header-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 80px;
+  width: 100%;
+  margin-bottom: 60px;
+}
+
+/* Featured Project Wrapper (Spans full width) */
+.projects-featured-wrapper {
+  width: 100%;
+  cursor: pointer;
+}
+
+.featured-project-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.featured-project-image-wrapper {
+  width: 100%;
+  height: 520px;
+  overflow: hidden;
+  margin-bottom: 25px;
+  background-color: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+
+.featured-project-title {
+  font-family: 'Southera', serif;
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: var(--color-accent-2);
+  margin: 0 0 15px 0;
+  letter-spacing: 0.02em;
+  line-height: 1.25;
+  transition: text-shadow 0.4s ease, color 0.4s ease;
+}
+
+.projects-featured-wrapper:hover .project-preview-image {
+  transform: scale(1.02);
+  opacity: 0.95;
+}
+
+
+@media (max-width: 992px) {
+  .featured-project-image-wrapper {
+    height: 380px;
+  }
+
+  .featured-project-title {
+    font-size: 1.8rem;
+  }
+
+  .projects-top-section {
+    margin-bottom: 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  .projects-header-wrapper {
+    grid-template-columns: 1fr;
+    margin-bottom: 30px;
+  }
+
+  .projects-header-item-new {
+    grid-column: 1;
+    text-align: left;
+    padding-left: 15px;
+    margin-bottom: 20px;
+  }
+
+  .projects-featured-wrapper {
+    margin-bottom: 20px;
+  }
+
+  .featured-project-image-wrapper {
+    height: 280px;
+  }
+
+  .featured-project-title {
+    font-size: 1.5rem;
+  }
+
+  .projects-top-section {
+    margin-bottom: 40px;
+  }
 }
 
 /* Individual Grid Items for Staggering */
@@ -132,7 +235,6 @@
   right: 0;
   width: 100%;
   transform-origin: top;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.15);
   transition: background 0.4s ease;
 }
 
@@ -144,7 +246,7 @@
   border-radius: 50%;
   transform: translate(-50%, -50%);
   border: 2px solid #ffffff;
-  transition: background-color 0.4s ease, box-shadow 0.4s ease, top 0.1s ease-out;
+  transition: background-color 0.4s ease, top 0.1s ease-out;
 }
 
 /* Minimalist Preview Cards (Home Preview Design) */
@@ -196,6 +298,41 @@
   margin: 0 0 15px 0;
   letter-spacing: 0.02em;
   line-height: 1.25;
+}
+
+.projects-container .project-preview-description {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0 0 15px 0;
+  max-width: 90%;
+}
+
+.project-preview-tech-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.project-preview-tech-pill {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--color-accent-1);
+  background-color: rgba(201, 175, 132, 0.08);
+  border: 1px solid rgba(201, 175, 132, 0.2);
+  padding: 4px 10px;
+  border-radius: 12px;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+}
+
+.project-preview-card:hover .project-preview-tech-pill,
+.projects-featured-wrapper:hover .project-preview-tech-pill {
+  background-color: rgba(201, 175, 132, 0.12);
+  border-color: rgba(201, 175, 132, 0.35);
 }
 
 .projects-container .project-preview-link {
@@ -267,25 +404,25 @@
 
   .item-1 {
     grid-column: 1;
-    grid-row: 2;
+    grid-row: 1;
     margin-top: 0;
   }
 
   .item-2 {
     grid-column: 1;
-    grid-row: 3;
+    grid-row: 2;
     margin-top: 0;
   }
 
   .item-3 {
     grid-column: 1;
-    grid-row: 4;
+    grid-row: 3;
     margin-top: 0;
   }
 
   .item-4 {
     grid-column: 1;
-    grid-row: 5;
+    grid-row: 4;
     margin-top: 0;
   }
 
