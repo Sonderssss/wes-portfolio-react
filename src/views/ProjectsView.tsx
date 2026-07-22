@@ -1,7 +1,9 @@
 import React, { useEffect, useRef, useSyncExternalStore, useCallback } from "react";
+import { m } from "motion/react";
 import "./ProjectsView.css";
 import ProjectCard, { Project } from "../components/ProjectCard";
 import tabGroupBookmarkerImg from "../assets/images/tab-group-bookmarker.png";
+import portfolioScreenshotImg from "../assets/images/Portfolio-screenshot.png";
 
 const projects: Project[] = [
   {
@@ -95,70 +97,100 @@ const ProjectsView: React.FC = () => {
 
   const scrollProgress = useSyncExternalStore(subscribe, getSnapshot, () => 0);
 
-  const activeGlowColor =
-    scrollProgress < 0.35
-      ? "var(--color-accent-1)"
-      : scrollProgress < 0.7
-      ? "var(--color-accent-2)"
-      : "var(--color-accent-1)";
-
   return (
-    <div className="projects-container" ref={containerRef}>
-      {/* Central Divider Line */}
-      <div className="projects-divider-container">
-        <div className="projects-divider-base" />
-        <div
-          className="projects-divider-glow"
-          style={{
-            height: `${scrollProgress * 100}%`,
-            background: `linear-gradient(to bottom, var(--color-accent-1), var(--color-accent-2), var(--color-accent-1))`
-          }}
-        />
-        <div
-          className="projects-divider-orb"
-          style={{
-            top: `${scrollProgress * 100}%`,
-            backgroundColor: activeGlowColor,
-            boxShadow: `0 0 10px ${activeGlowColor}, 0 0 20px ${activeGlowColor}, 0 0 30px ${activeGlowColor}`
-          }}
-        />
-      </div>
-
-      <div className="projects-grid-layout">
-        {/* Row 1, Right: PROJECTS Header */}
-        <div className="projects-header-item">
-          <h1 className="projects-title">
-            <span className="title-pro">PRO</span>
-            <span className="title-jects">
-              JE<span className="title-cts-wrapper">CTS
-                <span className="title-triangles" style={{ color: activeGlowColor }}>
-                  <span className="tri">▲</span>
-                  <span className="tri">▲</span>
-                  <span className="tri">▲</span>
+    <div className="projects-container">
+      {/* Top Section: Header & Featured Project */}
+      <div className="projects-top-section">
+        {/* PROJECTS Header */}
+        <div className="projects-header-wrapper">
+          <div className="projects-header-item-new">
+            <h1 className="projects-title">
+              <span className="title-pro">PRO</span>
+              <span className="title-jects">
+                JE<span className="title-cts-wrapper">CTS
+                  <span className="title-triangles" style={{ color: "var(--color-accent-1)" }}>
+                    <span className="tri">▲</span>
+                    <span className="tri">▲</span>
+                    <span className="tri">▲</span>
+                  </span>
                 </span>
               </span>
-            </span>
-          </h1>
+            </h1>
+          </div>
         </div>
 
-        {/* Row 1, Left: Project 1 */}
-        <div className="project-grid-item item-1">
-          <ProjectCard project={projects[0]} index={0} />
+        {/* Featured Project - This Website */}
+        <m.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.15 }}
+          transition={{ duration: 0.7, delay: 0.1, ease: [0.215, 0.61, 0.355, 1] }}
+          className="projects-featured-wrapper"
+        >
+          <div className="featured-project-card">
+            <span className="project-preview-category">PORTFOLIO DESIGN</span>
+            <div className="featured-project-image-wrapper">
+              <img
+                src={portfolioScreenshotImg}
+                alt="This Website"
+                className="project-preview-image"
+                referrerPolicy="no-referrer"
+              />
+            </div>
+            <h3 className="featured-project-title">This Website</h3>
+            <a
+              href="https://github.com/Sonderssss/wes-portfolio-react"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="project-preview-link"
+            >
+              VIEW SOURCE CODE →
+            </a>
+          </div>
+        </m.div>
+      </div>
+
+      {/* Bottom Section: Staggered Grid with Central Divider */}
+      <div className="projects-main-section" ref={containerRef}>
+        {/* Central Divider Line */}
+        <div className="projects-divider-container">
+          <div className="projects-divider-base" />
+          <div
+            className="projects-divider-glow"
+            style={{
+              height: `${scrollProgress * 100}%`,
+              backgroundColor: "var(--color-accent-1)"
+            }}
+          />
+          <div
+            className="projects-divider-orb"
+            style={{
+              top: `${scrollProgress * 100}%`,
+              backgroundColor: "var(--color-accent-1)"
+            }}
+          />
         </div>
 
-        {/* Row 2, Right: Project 2 */}
-        <div className="project-grid-item item-2">
-          <ProjectCard project={projects[1]} index={1} />
-        </div>
+        <div className="projects-grid-layout">
+          {/* Row 1, Left: Project 1 */}
+          <div className="project-grid-item item-1">
+            <ProjectCard project={projects[0]} index={0} />
+          </div>
 
-        {/* Row 3, Left: Project 3 */}
-        <div className="project-grid-item item-3">
-          <ProjectCard project={projects[2]} index={2} />
-        </div>
+          {/* Row 2, Right: Project 2 */}
+          <div className="project-grid-item item-2">
+            <ProjectCard project={projects[1]} index={1} />
+          </div>
 
-        {/* Row 4, Right: Project 4 */}
-        <div className="project-grid-item item-4">
-          <ProjectCard project={projects[3]} index={3} />
+          {/* Row 3, Left: Project 3 */}
+          <div className="project-grid-item item-3">
+            <ProjectCard project={projects[2]} index={2} />
+          </div>
+
+          {/* Row 4, Right: Project 4 */}
+          <div className="project-grid-item item-4">
+            <ProjectCard project={projects[3]} index={3} />
+          </div>
         </div>
       </div>
     </div>
