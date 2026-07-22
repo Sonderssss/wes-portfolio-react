@@ -13,7 +13,7 @@ const projects: Project[] = [
     image: "https://picsum.photos/seed/logistics/800/1200",
     size: "large",
     description:
-      "A full-stack logistics management platform with real-time tracking, route optimization, and analytics dashboards.",
+      "An automated system for extracting and structuring data from the AIESEC website. I had intended it to be a way to quickly source available opportunities on their official website to a google sheets form for easier and faster retrieval especially for an opportunity manager. It was a great way to get familiar with web scraping and apis, it was also my first time working with google sheets apis and automating a process that was previously manual.",
     codebase: "Python, BeautifulSoup, Google Sheets API",
     sourceCode: "https://github.com/Sonderssss/aiesec_scrapper",
     liveLink: "#",
@@ -25,7 +25,7 @@ const projects: Project[] = [
     image: "https://picsum.photos/seed/city/800/600",
     size: "small",
     description:
-      "Interactive dashboard for monitoring urban infrastructure metrics including traffic, energy, and public services.",
+      "A frontend design for a smart subscription tracker. It is meant to complement the fullstack project I built, and serve as a way to have a dedicated frontend for the project.",
     codebase: "React JS",
     sourceCode: "https://github.com/Sonderssss/subscription-tracker-frontend",
     liveLink: "#",
@@ -37,7 +37,7 @@ const projects: Project[] = [
     image: "https://picsum.photos/seed/eco/800/600",
     size: "small",
     description:
-      "A mobile app that helps users track their carbon footprint and suggests eco-friendly alternatives.",
+      "Backend for a smart subscription tracker to help you track and manage your subsciptions. This is the backend for the smart subscription tracker project. It is built with Node.js and Express, and uses MongoDB for the database. I also got a chance to add AI integration to it using Geminis API, with which I used for summarization of the subscription and providing users with insights about their subscriptions.",
     codebase: "Node.js, Express, MongoDB",
     sourceCode: "https://github.com/Sonderssss/subscription-tracker",
     liveLink: "#",
@@ -49,7 +49,7 @@ const projects: Project[] = [
     image: tabGroupBookmarkerImg,
     size: "small",
     description:
-      "An Easier way to manage your grouped tabs and save them as a folder in your Bookmarks.",
+      "An Easier way to manage your grouped tabs and save them as a folder in your Bookmarks. This is a chrome extension that I built to help me manage my grouped tabs. I found myself having to constantly switch between different tabs, and I thought it would be a good idea to have a way to save them as a folder in my bookmarks.",
     codebase: "HTML, CSS, JavaScript",
     sourceCode: "https://github.com/Sonderssss/tab-group-bookmarker",
     liveLink: "#",
@@ -138,6 +138,16 @@ const ProjectsView: React.FC = () => {
               />
             </div>
             <h3 className="featured-project-title">This Website</h3>
+            <p className="project-preview-description">
+              This personal portfolio website, featuring custom modern web design, is meant to be a "Visual Resume" that is meant to be viewed more than it is meant to be read.
+            </p>
+            <div className="project-preview-tech-pills">
+              {["React", "TypeScript", "Vite", "Framer Motion", "CSS"].map((tech, i) => (
+                <span key={i} className="project-preview-tech-pill">
+                  {tech}
+                </span>
+              ))}
+            </div>
             <a
               href="https://github.com/Sonderssss/wes-portfolio-react"
               target="_blank"
